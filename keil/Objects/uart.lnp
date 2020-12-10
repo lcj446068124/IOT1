@@ -1,0 +1,16 @@
+--cpu=Cortex-M4.fp
+".\objects\system_msp432p401r.o"
+".\objects\startup_msp432p401r_uvision.o"
+"..\source\ti\devices\msp432p4xx\driverlib\keil\msp432p4xx_driverlib.lib"
+".\objects\main.o"
+".\objects\myuart.o"
+".\objects\tick.o"
+".\objects\buffer.o"
+".\objects\atcommand.o"
+".\objects\cjson.o"
+".\objects\sign_mqtt.o"
+".\objects\sign_sha256.o"
+--library_type=microlib --strict --scatter ".\Objects\uart.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\uart.map" -o .\Objects\uart.axf

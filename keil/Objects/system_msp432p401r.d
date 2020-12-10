@@ -1,0 +1,10 @@
+.\objects\system_msp432p401r.o: ..\source\ti\devices\msp432p4xx\startup_system_files\system_msp432p401r.c
+.\objects\system_msp432p401r.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_msp432p401r.o: ..\source\ti/devices/msp432p4xx/inc/msp.h
+.\objects\system_msp432p401r.o: ..\source\ti/devices/msp432p4xx/inc/msp432p401r.h
+.\objects\system_msp432p401r.o: ..\source\ti/devices/msp432p4xx/inc/msp_compatibility.h
+.\objects\system_msp432p401r.o: ..\source\ti/devices/msp432p4xx/inc/msp432p401r_classic.h
+.\objects\system_msp432p401r.o: ..\source\third_party\CMSIS\Include\core_cm4.h
+.\objects\system_msp432p401r.o: ..\source\third_party\CMSIS\Include\cmsis_compiler.h
+.\objects\system_msp432p401r.o: ..\source\third_party\CMSIS\Include\cmsis_armcc.h
+.\objects\system_msp432p401r.o: ..\source\ti/devices/msp432p4xx/inc/system_msp432p401r.h
