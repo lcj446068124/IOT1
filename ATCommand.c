@@ -35,46 +35,45 @@ bool ATCheckSetResponse(Buffer *b){
 	BufferInit(b);
 	tempBuffer[ptr] = '\0';
 	printf("Response:%s\r\nlen:%d\r\n",tempBuffer,ptr);
-	if(tempBuffer[2] == 'O' && tempBuffer[3] == 'K'){
-		return true;
-	}else{
-		return false;
+	for(i = 0;i + 1 < ptr;i++){
+		if(tempBuffer[i] == 'O' && tempBuffer[i + 1] == 'K')
+			return true;
 	}
-}
-
-//bool ATCheckSetResponse(Buffer *b){
-//	int i = 0;
-//	int* bb = &i;
-//	while(!(BufferLength(b) >= 6 && b->data[(b->rear + MAXBUFFERSIZE - 2) % MAXBUFFERSIZE] == 0x0d && b->data[(b->rear + MAXBUFFERSIZE - 1) % MAXBUFFERSIZE] == 0x0a) && i < 500000){
-//		i++;
-//	}
-//	if(i == 500000){
-//		printf("Time Limit Exceed....\r\n");
-//		BufferInit(&myBuffer);
-//		return false;
-//	}
-//	char tempBuffer[500];
-//	int ptr = 0;
-//	while(myBuffer.front != myBuffer.rear){
-//		tempBuffer[ptr++] = myBuffer.data[myBuffer.front];
-//		DeBuffer(&myBuffer);
-//	}
-//	BufferInit(&myBuffer);
-//	tempBuffer[ptr] = '\0';
-//	printf("tempBuffer:%s\r\nlen:%d\r\n",tempBuffer,ptr);
+	return false;
 //	if(tempBuffer[2] == 'O' && tempBuffer[3] == 'K'){
 //		return true;
 //	}else{
 //		return false;
 //	}
-//}
+}
+
+bool checkWifiConnection(char* command){
+	for(int i = 0;i < 3;i++){
+		printf("-------------------\r\n");
+			if(sendCommand(command)){
+				delay_ms(1000);
+				int len = strlen(tempBuffer);
+				for(int j = 0;j + 1 < len;j++){
+					if(tempBuffer[j] == 'U' && tempBuffer[j + 1] =='P')
+							return true;
+				}
+			}
+			if(i < 2)
+				printf("retry time(s) %d: \r\n",i + 1);
+			if(i == 2)
+				printf("*******fatal error:connecting wifi failed*******\r\n");
+			delay_ms(500);
+	}
+	delay_ms(1000);
+	return false;
+}
 
 
 bool execAT(char* command){
 	for(int i = 0;i < 3;i++){
 		printf("-------------------\r\n");
 			if(sendCommand(command)){
-				//delay_ms(1000);
+				delay_ms(1000);
 				return true;
 			}
 			if(i < 2)
@@ -83,7 +82,7 @@ bool execAT(char* command){
 				printf("*******fatal error:%s exec failed*******\r\n",command);
 			delay_ms(500);
 	}
-	//delay_ms(1000);
+	delay_ms(1000);
 	return false;
 }
 
@@ -151,7 +150,7 @@ char* AT_Get_SUB_In_Json(Buffer *b){
 
 bool AT_generate_wifi_connect_command(char* ATCommandBuffer,int len,const char* ssid,const char* pwd){
 	memset(ATCommandBuffer,0,len * sizeof(char));
-	char head[] = "AT+WJAP=";
+	char head[] = "AT+WJAPN=";
 	if(strlen(head) + strlen(ssid) + strlen(pwd) + 3 >= len)
 			return false;
 	memcpy(ATCommandBuffer, head, strlen(head));

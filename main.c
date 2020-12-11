@@ -28,6 +28,9 @@
 #include "cJSON.h"
 #include "sign_api.h"
 #include "exti.h"
+#include "led.h"
+
+//#define _debug_									//需要获取at指令执行详细信息时打开，注意供电不足时打开可能会导致串口频繁崩溃
 
 #define MaxCommandLength 100
 char shutdown_wifi = 0;
@@ -64,15 +67,7 @@ int main(void)
 	  MAP_SysTick_enableModule();
     MAP_SysTick_enableInterrupt();//systick config
 		//LED Config
-		MAP_GPIO_setAsOutputPin(GPIO_PORT_P1, GPIO_PIN0);
-		MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);	
-		//红灯
-    GPIO_setAsOutputPin(GPIO_PORT_P2,GPIO_PIN0);    //设置P2.0为输出模式
-    GPIO_setOutputLowOnPin(GPIO_PORT_P2,GPIO_PIN0);   //使LED2中红色灯初始为低电平（常暗）
-    
-    //绿灯
-    GPIO_setAsOutputPin(GPIO_PORT_P2,GPIO_PIN1);    //设置P2.1为输出模式
-    GPIO_setOutputLowOnPin(GPIO_PORT_P2,GPIO_PIN1); //使LED2中绿色灯初始为低电平（常暗）
+		LED_Init();
 	
 		myUartInit();
 		EXTIX_Init();
@@ -90,17 +85,30 @@ int main(void)
 			free(meta);
 			meta = NULL;
 		}
-		
+		#ifndef _debug_
+		MAP_UART_disableModule(EUSCI_A0_BASE);
+		#endif
 		delay_ms(2000);//等待3080系统初始化时间
+		
 		do{
+			led2ShowRed();
+			execAT("AT+MQTTAUTOSTART=OFF\r");
+			execAT("AT+MQTTRECONN=OFF\r");
 			execAT("AT+UARTE=OFF\r");//关闭指令回显
 			execAT("AT+MQTTCLOSE\r");																														//if presents error,just let it go!
 			execAT("AT+WEVENT=OFF\r");
 			execAT("AT+MQTTEVENT=OFF\r");																												//mqtt close turn on
 			AT_generate_wifi_connect_command(ATCommandBuffer,MaxCommandLength,wifi_ssid,wifi_pwd);
+			delay_ms(2000);
+			delay_ms(2000);
 			execAT(ATCommandBuffer);
 			delay_ms(2000);
-			GPIO_setOutputHighOnPin(GPIO_PORT_P2,GPIO_PIN1);   //P2.1输出高电平，LED2中绿灯亮
+			if(!checkWifiConnection("AT+WJAPS\r")){
+					delay_ms(1000);
+				led2blink(Red,5,1000);						//红灯闪烁代表wifi连接失败，可能由供电不足或者ssid，pwd错误导致
+					continue;
+			}
+			led2ShowBlue();
 			AT_generate_MQTTAUTH_command(ATCommandBuffer,MaxCommandLength,&signout);
 			execAT(ATCommandBuffer);
 			//execAT("AT+MQTTAUTH=light0&a1mCXgajcO4,8F04564BBFEC5C07BA5D842891BA0CA13F04CC33\r");//close reset
@@ -113,21 +121,27 @@ int main(void)
 			execAT(ATCommandBuffer);
 			//execAT("AT+MQTTCID=a1mCXgajcO4.light0|securemode=3\\,signmethod=hmacsha1|\r");			//close reset
 			execAT("AT+MQTTKEEPALIVE=30\r");
-			execAT("AT+MQTTRECONN=ON\r");
-			execAT("AT+MQTTAUTOSTART=ON\r");																											//close reset
+			//execAT("AT+MQTTRECONN=ON\r");
+			//execAT("AT+MQTTAUTOSTART=ON\r");																											//close reset
 			AT_generate_MQTTSUB_command(ATCommandBuffer,MaxCommandLength,"0",ProductKey,DeviceName);
-		}while(!execAT("AT+MQTTSTART\r") || !execAT(ATCommandBuffer));
-		
+			if(execAT("AT+MQTTSTART\r") && execAT(ATCommandBuffer)){
+				led2ShowGreen();
+				break;
+			}
+			led2blink(Blue,5,1000);											//蓝灯闪烁代表连接阿里云服务器失败
+		}while(1);
+		GPIO_setOutputHighOnPin(GPIO_PORT_P2,GPIO_PIN1);   //P2.1输出高电平，LED2中绿灯亮
+		MAP_UART_enableModule(EUSCI_A0_BASE);
 		AT_generate_MQTTPUB_command(ATCommandBuffer,MaxCommandLength,ProductKey,DeviceName);
 		while(!execAT(ATCommandBuffer));
 		
 		AT_Send_message("{\"id\":1605187527200,\"params\":{\"PowerSwitch\":1},\"version\":\"1.0\",\"method\":\"thing.event.property.post\"}");										//物模型属性上报
-		
+		printf("------connection established------\r\n");
     while(1){
+			MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P2,GPIO_PIN1);
 			if(shutdown_wifi == 1){
-				execAT("AT+MQTTUNSUB=0\r");
-				execAT("AT+MQTTRECONN=OFF\r");
-				execAT("AT+MQTTAUTOSTART=OFF\r");
+				GPIO_setOutputHighOnPin(GPIO_PORT_P2,GPIO_PIN1);   //P2.1输出高电平，LED2中绿灯亮
+				execAT("AT+MQTTCLOSE\r");
 				execAT("AT+WJAPQ\r");
 				printf("------shut down------\r\n");
 				GPIO_setOutputLowOnPin(GPIO_PORT_P2,GPIO_PIN1);

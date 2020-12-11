@@ -20,6 +20,7 @@ bool AT_generate_MQTTSOCK_command(char* ATCommandBuffer,int len,iotx_sign_mqtt_t
 bool AT_generate_MQTTCID_command(char* ATCommandBuffer,int len,iotx_sign_mqtt_t* signout);
 
 bool AT_generate_MQTTSUB_command(char* ATCommandBuffer,int len,char* subId,const char* ProductKey,const char* DeviceName);
+bool checkWifiConnection(char* command);
 bool AT_generate_MQTTPUB_command(char* ATCommandBuffer,int len,const char* ProductKey,const char* DeviceName);
 
 #endif
