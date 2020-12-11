@@ -9,10 +9,14 @@ Section Cross References
     startup_msp432p401r_uvision.o(RESET) refers to startup_msp432p401r_uvision.o(.text) for Reset_Handler
     startup_msp432p401r_uvision.o(RESET) refers to tick.o(i.SysTick_Handler) for SysTick_Handler
     startup_msp432p401r_uvision.o(RESET) refers to myuart.o(i.EUSCIA2_IRQHandler) for EUSCIA2_IRQHandler
+    startup_msp432p401r_uvision.o(RESET) refers to exti.o(i.PORT1_IRQHandler) for PORT1_IRQHandler
     startup_msp432p401r_uvision.o(.text) refers to system_msp432p401r.o(i.SystemInit) for SystemInit
     startup_msp432p401r_uvision.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
     main.o(i.main) refers to tick.o(i.ms_ticker_init) for ms_ticker_init
+    main.o(i.main) refers to gpio_MSP432P4XX.o(i.GPIO_setAsOutputPin) for GPIO_setAsOutputPin
+    main.o(i.main) refers to gpio_MSP432P4XX.o(i.GPIO_setOutputLowOnPin) for GPIO_setOutputLowOnPin
     main.o(i.main) refers to myuart.o(i.myUartInit) for myUartInit
+    main.o(i.main) refers to exti.o(i.EXTIX_Init) for EXTIX_Init
     main.o(i.main) refers to mallocr.o(i.__malloc$realloc) for malloc
     main.o(i.main) refers to strcpy.o(.text) for strcpy
     main.o(i.main) refers to sign_mqtt.o(i.IOT_Sign_MQTT) for IOT_Sign_MQTT
@@ -21,6 +25,7 @@ Section Cross References
     main.o(i.main) refers to tick.o(i.delay_ms) for delay_ms
     main.o(i.main) refers to atcommand.o(i.execAT) for execAT
     main.o(i.main) refers to atcommand.o(i.AT_generate_wifi_connect_command) for AT_generate_wifi_connect_command
+    main.o(i.main) refers to gpio_MSP432P4XX.o(i.GPIO_setOutputHighOnPin) for GPIO_setOutputHighOnPin
     main.o(i.main) refers to atcommand.o(i.AT_generate_MQTTAUTH_command) for AT_generate_MQTTAUTH_command
     main.o(i.main) refers to atcommand.o(i.AT_generate_MQTTSOCK_command) for AT_generate_MQTTSOCK_command
     main.o(i.main) refers to atcommand.o(i.AT_generate_MQTTCID_command) for AT_generate_MQTTCID_command
@@ -402,6 +407,32 @@ Section Cross References
     sign_sha256.o(.ARM.exidx) refers to sign_sha256.o(i._Z19utils_sha256_finishP18iot_sha256_contextPh) for i._Z19utils_sha256_finishP18iot_sha256_contextPh
     sign_sha256.o(.ARM.exidx) refers to sign_sha256.o(i._Z12utils_sha256PKhjPh) for i._Z12utils_sha256PKhjPh
     sign_sha256.o(.ARM.exidx) refers to sign_sha256.o(i._Z17utils_hmac_sha256PKhjS0_jPh) for i._Z17utils_hmac_sha256PKhjS0_jPh
+    exti.o(i.PORT1_IRQHandler) refers to gpio_MSP432P4XX.o(i.GPIO_setOutputHighOnPin) for GPIO_setOutputHighOnPin
+    exti.o(i.PORT1_IRQHandler) refers to main.o(.data) for shutdown_wifi
+    gpio_MSP432P4XX.o(i.GPIO_clearInterruptFlag) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_disableInterrupt) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_enableInterrupt) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_getEnabledInterruptStatus) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_getInputPinValue) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_getInterruptStatus) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_interruptEdgeSelect) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_registerInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_registerInterrupt) for Interrupt_registerInterrupt
+    gpio_MSP432P4XX.o(i.GPIO_registerInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_enableInterrupt) for Interrupt_enableInterrupt
+    gpio_MSP432P4XX.o(i.GPIO_registerInterrupt) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsInputPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsInputPinWithPullDownResistor) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsInputPinWithPullUpResistor) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsOutputPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsPeripheralModuleFunctionInputPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setAsPeripheralModuleFunctionOutputPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setDriveStrengthHigh) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setDriveStrengthLow) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setOutputHighOnPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_setOutputLowOnPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_toggleOutputOnPin) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
+    gpio_MSP432P4XX.o(i.GPIO_unregisterInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_disableInterrupt) for Interrupt_disableInterrupt
+    gpio_MSP432P4XX.o(i.GPIO_unregisterInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_unregisterInterrupt) for Interrupt_unregisterInterrupt
+    gpio_MSP432P4XX.o(i.GPIO_unregisterInterrupt) refers to gpio_MSP432P4XX.o(.constdata) for .constdata
     uart_MSP432P4XX.o(i.UART_registerInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_registerInterrupt) for Interrupt_registerInterrupt
     uart_MSP432P4XX.o(i.UART_registerInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_enableInterrupt) for Interrupt_enableInterrupt
     uart_MSP432P4XX.o(i.UART_unregisterInterrupt) refers to interrupt_MSP432P4XX.o(i.Interrupt_disableInterrupt) for Interrupt_disableInterrupt
@@ -897,6 +928,29 @@ Removing Unused input sections from the image.
     Removing sign_sha256.o(.ARM.exidx), (8 bytes).
     Removing sign_sha256.o(.ARM.exidx), (8 bytes).
     Removing sign_sha256.o(.ARM.exidx), (8 bytes).
+    Removing exti.o(.rev16_text), (4 bytes).
+    Removing exti.o(.revsh_text), (4 bytes).
+    Removing exti.o(.rrx_text), (6 bytes).
+    Removing gpio_MSP432P4XX.o(.rev16_text), (4 bytes).
+    Removing gpio_MSP432P4XX.o(.revsh_text), (4 bytes).
+    Removing gpio_MSP432P4XX.o(.rrx_text), (6 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_clearInterruptFlag), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_disableInterrupt), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_enableInterrupt), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_getEnabledInterruptStatus), (52 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_getInputPinValue), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_getInterruptStatus), (16 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_interruptEdgeSelect), (28 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_registerInterrupt), (28 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setAsInputPin), (40 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setAsInputPinWithPullDownResistor), (44 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setAsInputPinWithPullUpResistor), (44 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setAsPeripheralModuleFunctionInputPin), (72 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setAsPeripheralModuleFunctionOutputPin), (72 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setDriveStrengthHigh), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_setDriveStrengthLow), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_toggleOutputOnPin), (20 bytes).
+    Removing gpio_MSP432P4XX.o(i.GPIO_unregisterInterrupt), (28 bytes).
     Removing uart_MSP432P4XX.o(.rev16_text), (4 bytes).
     Removing uart_MSP432P4XX.o(.revsh_text), (4 bytes).
     Removing uart_MSP432P4XX.o(.rrx_text), (6 bytes).
@@ -950,7 +1004,7 @@ Removing Unused input sections from the image.
     Removing dflti.o(.text), (34 bytes).
     Removing f2d.o(.text), (38 bytes).
 
-181 unused section(s) (total 9285 bytes) removed from the image.
+204 unused section(s) (total 9877 bytes) removed from the image.
 
 ==============================================================================
 
@@ -961,88 +1015,90 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      324  startup_msp432p401r_uvision.o(RESET)
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_c.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ctype_c.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_c.o ABSOLUTE
     ../clib/microlib/ctype/tolower.c         0x00000000   Number         0  tolower.o ABSOLUTE
-    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
-    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
-    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
     ../clib/microlib/malloc/mvars.c          0x00000000   Number         0  mvars.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpy.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyc.o ABSOLUTE
-    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memset.o ABSOLUTE
+    ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ../clib/microlib/string/strcmp.c         0x00000000   Number         0  strcmp.o ABSOLUTE
     ../clib/microlib/string/strcpy.c         0x00000000   Number         0  strcpy.o ABSOLUTE
     ../clib/microlib/string/strlen.c         0x00000000   Number         0  strlen.o ABSOLUTE
     ../clib/microlib/string/strncmp.c        0x00000000   Number         0  strncmp.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  strtod.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _scanf.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _sgetc.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  scanf_char.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  scanf_fp.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  sscanf.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _scanf_str.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _scanf_int.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _scanf_longlong.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  scanf_char.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  sscanf.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  _scanf.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  strtod.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/f2d.c                  0x00000000   Number         0  f2d.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixi.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dflti.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ../mathlib/fabs.c                        0x00000000   Number         0  fabs.o ABSOLUTE
     ../mathlib/strtod.c                      0x00000000   Number         0  strtod.o ABSOLUTE
     ..\ATCommand.c                           0x00000000   Number         0  atcommand.o ABSOLUTE
     ..\\ATCommand.c                          0x00000000   Number         0  atcommand.o ABSOLUTE
     ..\\buffer.c                             0x00000000   Number         0  buffer.o ABSOLUTE
+    ..\\exti.c                               0x00000000   Number         0  exti.o ABSOLUTE
     ..\\main.c                               0x00000000   Number         0  main.o ABSOLUTE
     ..\\myUart.c                             0x00000000   Number         0  myuart.o ABSOLUTE
     ..\\source\\ti\\devices\\msp432p4xx\\startup_system_files\\system_msp432p401r.c 0x00000000   Number         0  system_msp432p401r.o ABSOLUTE
     ..\\tick.c                               0x00000000   Number         0  tick.o ABSOLUTE
     ..\buffer.c                              0x00000000   Number         0  buffer.o ABSOLUTE
     ..\cJSON.c                               0x00000000   Number         0  cjson.o ABSOLUTE
+    ..\exti.c                                0x00000000   Number         0  exti.o ABSOLUTE
     ..\main.c                                0x00000000   Number         0  main.o ABSOLUTE
     ..\myUart.c                              0x00000000   Number         0  myuart.o ABSOLUTE
     ..\sign_mqtt.cpp                         0x00000000   Number         0  sign_mqtt.o ABSOLUTE
@@ -1057,6 +1113,8 @@ Image Symbol Table
     init.s                                   0x00000000   Number         0  init.o ABSOLUTE
     source/ti/devices/msp432p4xx/driverlib/cpu.c 0x00000000   Number         0  cpu_MSP432P4XX.o ABSOLUTE
     source/ti/devices/msp432p4xx/driverlib/cpu.c 0x00000000   Number         0  cpu_MSP432P4XX.o ABSOLUTE
+    source/ti/devices/msp432p4xx/driverlib/gpio.c 0x00000000   Number         0  gpio_MSP432P4XX.o ABSOLUTE
+    source/ti/devices/msp432p4xx/driverlib/gpio.c 0x00000000   Number         0  gpio_MSP432P4XX.o ABSOLUTE
     source/ti/devices/msp432p4xx/driverlib/interrupt.c 0x00000000   Number         0  interrupt_MSP432P4XX.o ABSOLUTE
     source/ti/devices/msp432p4xx/driverlib/interrupt.c 0x00000000   Number         0  interrupt_MSP432P4XX.o ABSOLUTE
     source/ti/devices/msp432p4xx/driverlib/uart.c 0x00000000   Number         0  uart_MSP432P4XX.o ABSOLUTE
@@ -1095,8 +1153,8 @@ Image Symbol Table
     .text                                    0x00000950   Section        0  _sgetc.o(.text)
     .text                                    0x00000990   Section        0  strtod.o(.text)
     _local_sscanf                            0x00000991   Thumb Code    54  strtod.o(.text)
-    .text                                    0x00000a2c   Section        0  depilogue.o(.text)
     .text                                    0x00000a2c   Section        0  iusefp.o(.text)
+    .text                                    0x00000a2c   Section        0  depilogue.o(.text)
     .text                                    0x00000ae6   Section        0  ddiv.o(.text)
     .text                                    0x00000bc4   Section        0  dfixul.o(.text)
     .text                                    0x00000bf4   Section       36  init.o(.text)
@@ -1118,109 +1176,117 @@ Image Symbol Table
     i.BufferLength                           0x000014c6   Section        0  buffer.o(i.BufferLength)
     i.DeBuffer                               0x00001520   Section        0  buffer.o(i.DeBuffer)
     i.EUSCIA2_IRQHandler                     0x00001550   Section        0  myuart.o(i.EUSCIA2_IRQHandler)
-    i.EnBuffer                               0x00001590   Section        0  buffer.o(i.EnBuffer)
-    i.IOT_Sign_MQTT                          0x000015e0   Section        0  sign_mqtt.o(i.IOT_Sign_MQTT)
-    i.SysTick_Handler                        0x000017dc   Section        0  tick.o(i.SysTick_Handler)
-    i.SystemInit                             0x000017ec   Section        0  system_msp432p401r.o(i.SystemInit)
-    i.UART_receiveData                       0x00001858   Section        0  uart_MSP432P4XX.o(i.UART_receiveData)
-    i.UART_transmitData                      0x00001872   Section        0  uart_MSP432P4XX.o(i.UART_transmitData)
-    i.Usart_SendByte                         0x0000188a   Section        0  myuart.o(i.Usart_SendByte)
-    i.Usart_SendString                       0x0000189a   Section        0  myuart.o(i.Usart_SendString)
-    i._Z17utils_hmac_sha256PKhjS0_jPh        0x000018b6   Section        0  sign_sha256.o(i._Z17utils_hmac_sha256PKhjS0_jPh)
-    i._Z17utils_sha256_initP18iot_sha256_context 0x00001978   Section        0  sign_sha256.o(i._Z17utils_sha256_initP18iot_sha256_context)
-    i._Z18_sign_get_clientidPcPKcS1_         0x00001988   Section        0  sign_mqtt.o(i._Z18_sign_get_clientidPcPKcS1_)
-    i._Z19utils_sha256_finishP18iot_sha256_contextPh 0x00001ad4   Section        0  sign_sha256.o(i._Z19utils_sha256_finishP18iot_sha256_contextPh)
-    i._Z19utils_sha256_startsP18iot_sha256_context 0x00001c38   Section        0  sign_sha256.o(i._Z19utils_sha256_startsP18iot_sha256_context)
-    i._Z19utils_sha256_updateP18iot_sha256_contextPKhj 0x00001c88   Section        0  sign_sha256.o(i._Z19utils_sha256_updateP18iot_sha256_contextPKhj)
-    i._Z20utils_sha256_processP18iot_sha256_contextPKh 0x00001d04   Section        0  sign_sha256.o(i._Z20utils_sha256_processP18iot_sha256_contextPKh)
-    i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc 0x00001ec4   Section        0  sign_mqtt.o(i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc)
-    i._Z8_hex2strPhtPc                       0x00002034   Section        0  sign_mqtt.o(i._Z8_hex2strPhtPc)
-    _hex2str(unsigned char*, unsigned short, char*) 0x00002035   Thumb Code    58  sign_mqtt.o(i._Z8_hex2strPhtPc)
-    i.__0printf                              0x00002084   Section        0  printfa.o(i.__0printf)
-    i.__0sprintf                             0x000020a4   Section        0  printfa.o(i.__0sprintf)
-    i.__free$realloc                         0x000020cc   Section        0  mallocr.o(i.__free$realloc)
-    i.__malloc$realloc                       0x00002128   Section        0  mallocr.o(i.__malloc$realloc)
-    i.__scatterload_copy                     0x00002178   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00002186   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00002188   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._fp_digits                             0x00002198   Section        0  printfa.o(i._fp_digits)
-    _fp_digits                               0x00002199   Thumb Code   366  printfa.o(i._fp_digits)
-    i._is_digit                              0x0000231c   Section        0  scanf_fp.o(i._is_digit)
-    i._printf_core                           0x0000232c   Section        0  printfa.o(i._printf_core)
-    _printf_core                             0x0000232d   Thumb Code  1744  printfa.o(i._printf_core)
-    i._printf_post_padding                   0x00002a08   Section        0  printfa.o(i._printf_post_padding)
-    _printf_post_padding                     0x00002a09   Thumb Code    36  printfa.o(i._printf_post_padding)
-    i._printf_pre_padding                    0x00002a2c   Section        0  printfa.o(i._printf_pre_padding)
-    _printf_pre_padding                      0x00002a2d   Thumb Code    46  printfa.o(i._printf_pre_padding)
-    i._sputc                                 0x00002a5a   Section        0  printfa.o(i._sputc)
-    _sputc                                   0x00002a5b   Thumb Code    10  printfa.o(i._sputc)
-    i.buffer_skip_whitespace                 0x00002a64   Section        0  cjson.o(i.buffer_skip_whitespace)
-    buffer_skip_whitespace                   0x00002a65   Thumb Code    72  cjson.o(i.buffer_skip_whitespace)
-    i.cJSON_Delete                           0x00002aac   Section        0  cjson.o(i.cJSON_Delete)
-    i.cJSON_GetObjectItemCaseSensitive       0x00002b04   Section        0  cjson.o(i.cJSON_GetObjectItemCaseSensitive)
-    i.cJSON_IsNumber                         0x00002b16   Section        0  cjson.o(i.cJSON_IsNumber)
-    i.cJSON_IsObject                         0x00002b2c   Section        0  cjson.o(i.cJSON_IsObject)
-    i.cJSON_New_Item                         0x00002b42   Section        0  cjson.o(i.cJSON_New_Item)
-    cJSON_New_Item                           0x00002b43   Thumb Code    28  cjson.o(i.cJSON_New_Item)
-    i.cJSON_Parse                            0x00002b5e   Section        0  cjson.o(i.cJSON_Parse)
-    i.cJSON_ParseWithLengthOpts              0x00002b70   Section        0  cjson.o(i.cJSON_ParseWithLengthOpts)
-    i.cJSON_ParseWithOpts                    0x00002c44   Section        0  cjson.o(i.cJSON_ParseWithOpts)
-    i.case_insensitive_strcmp                0x00002c6c   Section        0  cjson.o(i.case_insensitive_strcmp)
-    case_insensitive_strcmp                  0x00002c6d   Thumb Code    72  cjson.o(i.case_insensitive_strcmp)
-    i.delay_ms                               0x00002cb4   Section        0  tick.o(i.delay_ms)
-    i.execAT                                 0x00002cd0   Section        0  atcommand.o(i.execAT)
-    i.fputc                                  0x00002d70   Section        0  main.o(i.fputc)
-    i.get_decimal_point                      0x00002d90   Section        0  cjson.o(i.get_decimal_point)
-    get_decimal_point                        0x00002d91   Thumb Code     4  cjson.o(i.get_decimal_point)
-    i.get_object_item                        0x00002d94   Section        0  cjson.o(i.get_object_item)
-    get_object_item                          0x00002d95   Thumb Code    82  cjson.o(i.get_object_item)
-    i.internal_alloc                         0x00002de8   Section        0  mallocr.o(i.internal_alloc)
-    internal_alloc                           0x00002de9   Thumb Code    76  mallocr.o(i.internal_alloc)
-    i.isEmpty                                0x00002e38   Section        0  buffer.o(i.isEmpty)
-    i.main                                   0x00002e4c   Section        0  main.o(i.main)
-    i.ms_ticker_init                         0x0000320c   Section        0  tick.o(i.ms_ticker_init)
-    i.ms_ticker_read                         0x0000326c   Section        0  tick.o(i.ms_ticker_read)
-    i.myUartInit                             0x00003278   Section        0  myuart.o(i.myUartInit)
-    i.parse_array                            0x00003318   Section        0  cjson.o(i.parse_array)
-    parse_array                              0x00003319   Thumb Code   248  cjson.o(i.parse_array)
-    i.parse_hex4                             0x00003410   Section        0  cjson.o(i.parse_hex4)
-    parse_hex4                               0x00003411   Thumb Code    90  cjson.o(i.parse_hex4)
-    i.parse_number                           0x0000346c   Section        0  cjson.o(i.parse_number)
-    parse_number                             0x0000346d   Thumb Code   316  cjson.o(i.parse_number)
-    i.parse_object                           0x000035c0   Section        0  cjson.o(i.parse_object)
-    parse_object                             0x000035c1   Thumb Code   318  cjson.o(i.parse_object)
-    i.parse_string                           0x000036fe   Section        0  cjson.o(i.parse_string)
-    parse_string                             0x000036ff   Thumb Code   396  cjson.o(i.parse_string)
-    i.parse_value                            0x0000388c   Section        0  cjson.o(i.parse_value)
-    parse_value                              0x0000388d   Thumb Code   290  cjson.o(i.parse_value)
-    i.realloc                                0x000039c8   Section        0  mallocr.o(i.realloc)
-    i.sendCommand                            0x00003a34   Section        0  atcommand.o(i.sendCommand)
-    i.skip_utf8_bom                          0x00003aac   Section        0  cjson.o(i.skip_utf8_bom)
-    skip_utf8_bom                            0x00003aad   Thumb Code    56  cjson.o(i.skip_utf8_bom)
-    i.strtod                                 0x00003ae8   Section        0  strtod.o(i.strtod)
-    i.utf16_literal_to_utf8                  0x00003b18   Section        0  cjson.o(i.utf16_literal_to_utf8)
-    utf16_literal_to_utf8                    0x00003b19   Thumb Code   300  cjson.o(i.utf16_literal_to_utf8)
-    .constdata                               0x00003c44   Section       36  myuart.o(.constdata)
-    .constdata                               0x00003c68   Section      320  sign_sha256.o(.constdata)
-    K                                        0x00003c68   Data         256  sign_sha256.o(.constdata)
-    sha256_padding                           0x00003d68   Data          64  sign_sha256.o(.constdata)
-    .constdata                               0x00003da8   Section       64  ctype_c.o(.constdata)
-    .conststring                             0x00003de8   Section      305  main.o(.conststring)
-    .conststring                             0x00003f1c   Section      233  sign_mqtt.o(.conststring)
+    i.EXTIX_Init                             0x00001590   Section        0  exti.o(i.EXTIX_Init)
+    i.EnBuffer                               0x000015e0   Section        0  buffer.o(i.EnBuffer)
+    i.GPIO_setAsOutputPin                    0x00001630   Section        0  gpio_MSP432P4XX.o(i.GPIO_setAsOutputPin)
+    i.GPIO_setOutputHighOnPin                0x00001650   Section        0  gpio_MSP432P4XX.o(i.GPIO_setOutputHighOnPin)
+    i.GPIO_setOutputLowOnPin                 0x00001664   Section        0  gpio_MSP432P4XX.o(i.GPIO_setOutputLowOnPin)
+    i.IOT_Sign_MQTT                          0x00001678   Section        0  sign_mqtt.o(i.IOT_Sign_MQTT)
+    i.PORT1_IRQHandler                       0x00001874   Section        0  exti.o(i.PORT1_IRQHandler)
+    i.SysTick_Handler                        0x000018ac   Section        0  tick.o(i.SysTick_Handler)
+    i.SystemInit                             0x000018bc   Section        0  system_msp432p401r.o(i.SystemInit)
+    i.UART_receiveData                       0x00001928   Section        0  uart_MSP432P4XX.o(i.UART_receiveData)
+    i.UART_transmitData                      0x00001942   Section        0  uart_MSP432P4XX.o(i.UART_transmitData)
+    i.Usart_SendByte                         0x0000195a   Section        0  myuart.o(i.Usart_SendByte)
+    i.Usart_SendString                       0x0000196a   Section        0  myuart.o(i.Usart_SendString)
+    i._Z17utils_hmac_sha256PKhjS0_jPh        0x00001986   Section        0  sign_sha256.o(i._Z17utils_hmac_sha256PKhjS0_jPh)
+    i._Z17utils_sha256_initP18iot_sha256_context 0x00001a48   Section        0  sign_sha256.o(i._Z17utils_sha256_initP18iot_sha256_context)
+    i._Z18_sign_get_clientidPcPKcS1_         0x00001a58   Section        0  sign_mqtt.o(i._Z18_sign_get_clientidPcPKcS1_)
+    i._Z19utils_sha256_finishP18iot_sha256_contextPh 0x00001ba4   Section        0  sign_sha256.o(i._Z19utils_sha256_finishP18iot_sha256_contextPh)
+    i._Z19utils_sha256_startsP18iot_sha256_context 0x00001d08   Section        0  sign_sha256.o(i._Z19utils_sha256_startsP18iot_sha256_context)
+    i._Z19utils_sha256_updateP18iot_sha256_contextPKhj 0x00001d58   Section        0  sign_sha256.o(i._Z19utils_sha256_updateP18iot_sha256_contextPKhj)
+    i._Z20utils_sha256_processP18iot_sha256_contextPKh 0x00001dd4   Section        0  sign_sha256.o(i._Z20utils_sha256_processP18iot_sha256_contextPKh)
+    i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc 0x00001f94   Section        0  sign_mqtt.o(i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc)
+    i._Z8_hex2strPhtPc                       0x00002104   Section        0  sign_mqtt.o(i._Z8_hex2strPhtPc)
+    _hex2str(unsigned char*, unsigned short, char*) 0x00002105   Thumb Code    58  sign_mqtt.o(i._Z8_hex2strPhtPc)
+    i.__0printf                              0x00002154   Section        0  printfa.o(i.__0printf)
+    i.__0sprintf                             0x00002174   Section        0  printfa.o(i.__0sprintf)
+    i.__free$realloc                         0x0000219c   Section        0  mallocr.o(i.__free$realloc)
+    i.__malloc$realloc                       0x000021f8   Section        0  mallocr.o(i.__malloc$realloc)
+    i.__scatterload_copy                     0x00002248   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00002256   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00002258   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._fp_digits                             0x00002268   Section        0  printfa.o(i._fp_digits)
+    _fp_digits                               0x00002269   Thumb Code   366  printfa.o(i._fp_digits)
+    i._is_digit                              0x000023ec   Section        0  scanf_fp.o(i._is_digit)
+    i._printf_core                           0x000023fc   Section        0  printfa.o(i._printf_core)
+    _printf_core                             0x000023fd   Thumb Code  1744  printfa.o(i._printf_core)
+    i._printf_post_padding                   0x00002ad8   Section        0  printfa.o(i._printf_post_padding)
+    _printf_post_padding                     0x00002ad9   Thumb Code    36  printfa.o(i._printf_post_padding)
+    i._printf_pre_padding                    0x00002afc   Section        0  printfa.o(i._printf_pre_padding)
+    _printf_pre_padding                      0x00002afd   Thumb Code    46  printfa.o(i._printf_pre_padding)
+    i._sputc                                 0x00002b2a   Section        0  printfa.o(i._sputc)
+    _sputc                                   0x00002b2b   Thumb Code    10  printfa.o(i._sputc)
+    i.buffer_skip_whitespace                 0x00002b34   Section        0  cjson.o(i.buffer_skip_whitespace)
+    buffer_skip_whitespace                   0x00002b35   Thumb Code    72  cjson.o(i.buffer_skip_whitespace)
+    i.cJSON_Delete                           0x00002b7c   Section        0  cjson.o(i.cJSON_Delete)
+    i.cJSON_GetObjectItemCaseSensitive       0x00002bd4   Section        0  cjson.o(i.cJSON_GetObjectItemCaseSensitive)
+    i.cJSON_IsNumber                         0x00002be6   Section        0  cjson.o(i.cJSON_IsNumber)
+    i.cJSON_IsObject                         0x00002bfc   Section        0  cjson.o(i.cJSON_IsObject)
+    i.cJSON_New_Item                         0x00002c12   Section        0  cjson.o(i.cJSON_New_Item)
+    cJSON_New_Item                           0x00002c13   Thumb Code    28  cjson.o(i.cJSON_New_Item)
+    i.cJSON_Parse                            0x00002c2e   Section        0  cjson.o(i.cJSON_Parse)
+    i.cJSON_ParseWithLengthOpts              0x00002c40   Section        0  cjson.o(i.cJSON_ParseWithLengthOpts)
+    i.cJSON_ParseWithOpts                    0x00002d14   Section        0  cjson.o(i.cJSON_ParseWithOpts)
+    i.case_insensitive_strcmp                0x00002d3c   Section        0  cjson.o(i.case_insensitive_strcmp)
+    case_insensitive_strcmp                  0x00002d3d   Thumb Code    72  cjson.o(i.case_insensitive_strcmp)
+    i.delay_ms                               0x00002d84   Section        0  tick.o(i.delay_ms)
+    i.execAT                                 0x00002da0   Section        0  atcommand.o(i.execAT)
+    i.fputc                                  0x00002e40   Section        0  main.o(i.fputc)
+    i.get_decimal_point                      0x00002e60   Section        0  cjson.o(i.get_decimal_point)
+    get_decimal_point                        0x00002e61   Thumb Code     4  cjson.o(i.get_decimal_point)
+    i.get_object_item                        0x00002e64   Section        0  cjson.o(i.get_object_item)
+    get_object_item                          0x00002e65   Thumb Code    82  cjson.o(i.get_object_item)
+    i.internal_alloc                         0x00002eb8   Section        0  mallocr.o(i.internal_alloc)
+    internal_alloc                           0x00002eb9   Thumb Code    76  mallocr.o(i.internal_alloc)
+    i.isEmpty                                0x00002f08   Section        0  buffer.o(i.isEmpty)
+    i.main                                   0x00002f1c   Section        0  main.o(i.main)
+    i.ms_ticker_init                         0x000033ac   Section        0  tick.o(i.ms_ticker_init)
+    i.ms_ticker_read                         0x0000340c   Section        0  tick.o(i.ms_ticker_read)
+    i.myUartInit                             0x00003418   Section        0  myuart.o(i.myUartInit)
+    i.parse_array                            0x000034b8   Section        0  cjson.o(i.parse_array)
+    parse_array                              0x000034b9   Thumb Code   248  cjson.o(i.parse_array)
+    i.parse_hex4                             0x000035b0   Section        0  cjson.o(i.parse_hex4)
+    parse_hex4                               0x000035b1   Thumb Code    90  cjson.o(i.parse_hex4)
+    i.parse_number                           0x0000360c   Section        0  cjson.o(i.parse_number)
+    parse_number                             0x0000360d   Thumb Code   316  cjson.o(i.parse_number)
+    i.parse_object                           0x00003760   Section        0  cjson.o(i.parse_object)
+    parse_object                             0x00003761   Thumb Code   318  cjson.o(i.parse_object)
+    i.parse_string                           0x0000389e   Section        0  cjson.o(i.parse_string)
+    parse_string                             0x0000389f   Thumb Code   396  cjson.o(i.parse_string)
+    i.parse_value                            0x00003a2c   Section        0  cjson.o(i.parse_value)
+    parse_value                              0x00003a2d   Thumb Code   290  cjson.o(i.parse_value)
+    i.realloc                                0x00003b68   Section        0  mallocr.o(i.realloc)
+    i.sendCommand                            0x00003bd4   Section        0  atcommand.o(i.sendCommand)
+    i.skip_utf8_bom                          0x00003c4c   Section        0  cjson.o(i.skip_utf8_bom)
+    skip_utf8_bom                            0x00003c4d   Thumb Code    56  cjson.o(i.skip_utf8_bom)
+    i.strtod                                 0x00003c88   Section        0  strtod.o(i.strtod)
+    i.utf16_literal_to_utf8                  0x00003cb8   Section        0  cjson.o(i.utf16_literal_to_utf8)
+    utf16_literal_to_utf8                    0x00003cb9   Thumb Code   300  cjson.o(i.utf16_literal_to_utf8)
+    .constdata                               0x00003de4   Section       36  myuart.o(.constdata)
+    .constdata                               0x00003e08   Section      320  sign_sha256.o(.constdata)
+    K                                        0x00003e08   Data         256  sign_sha256.o(.constdata)
+    sha256_padding                           0x00003f08   Data          64  sign_sha256.o(.constdata)
+    .constdata                               0x00003f48   Section       76  gpio_MSP432P4XX.o(.constdata)
+    GPIO_PORT_TO_INT                         0x00003f48   Data          28  gpio_MSP432P4XX.o(.constdata)
+    GPIO_PORT_TO_BASE                        0x00003f64   Data          48  gpio_MSP432P4XX.o(.constdata)
+    .constdata                               0x00003f94   Section       64  ctype_c.o(.constdata)
+    .conststring                             0x00003fd4   Section      305  main.o(.conststring)
+    .conststring                             0x00004108   Section      233  sign_mqtt.o(.conststring)
     .data                                    0x20000000   Section        4  system_msp432p401r.o(.data)
-    .data                                    0x20000004   Section       24  main.o(.data)
-    .data                                    0x2000001c   Section        4  tick.o(.data)
-    _ticker_count                            0x2000001c   Data           4  tick.o(.data)
-    .data                                    0x20000020   Section       20  cjson.o(.data)
-    global_error                             0x20000020   Data           8  cjson.o(.data)
-    global_hooks                             0x20000028   Data          12  cjson.o(.data)
-    .data                                    0x20000034   Section       40  sign_mqtt.o(.data)
-    .data                                    0x2000005c   Section        4  stdout.o(.data)
-    .data                                    0x20000060   Section        4  mvars.o(.data)
+    .data                                    0x20000004   Section       28  main.o(.data)
+    .data                                    0x20000020   Section        4  tick.o(.data)
+    _ticker_count                            0x20000020   Data           4  tick.o(.data)
+    .data                                    0x20000024   Section       20  cjson.o(.data)
+    global_error                             0x20000024   Data           8  cjson.o(.data)
+    global_hooks                             0x2000002c   Data          12  cjson.o(.data)
+    .data                                    0x20000038   Section       40  sign_mqtt.o(.data)
+    .data                                    0x20000060   Section        4  stdout.o(.data)
     .data                                    0x20000064   Section        4  mvars.o(.data)
-    .bss                                     0x20000068   Section      100  main.o(.bss)
-    .bss                                     0x200000cc   Section      208  buffer.o(.bss)
-    .bss                                     0x2000019c   Section      200  atcommand.o(.bss)
+    .data                                    0x20000068   Section        4  mvars.o(.data)
+    .bss                                     0x2000006c   Section      100  main.o(.bss)
+    .bss                                     0x200000d0   Section      208  buffer.o(.bss)
+    .bss                                     0x200001a0   Section      200  atcommand.o(.bss)
     HEAP                                     0x20000268   Section     4096  startup_msp432p401r_uvision.o(HEAP)
     STACK                                    0x20001268   Section     4096  startup_msp432p401r_uvision.o(STACK)
 
@@ -1317,7 +1383,6 @@ Image Symbol Table
     FLCTL_IRQHandler                         0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
     FPU_IRQHandler                           0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
     PCM_IRQHandler                           0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
-    PORT1_IRQHandler                         0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
     PORT2_IRQHandler                         0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
     PORT3_IRQHandler                         0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
     PORT4_IRQHandler                         0x00000173   Thumb Code     0  startup_msp432p401r_uvision.o(.text)
@@ -1401,74 +1466,80 @@ Image Symbol Table
     BufferLength                             0x000014c7   Thumb Code    90  buffer.o(i.BufferLength)
     DeBuffer                                 0x00001521   Thumb Code    46  buffer.o(i.DeBuffer)
     EUSCIA2_IRQHandler                       0x00001551   Thumb Code    50  myuart.o(i.EUSCIA2_IRQHandler)
-    EnBuffer                                 0x00001591   Thumb Code    78  buffer.o(i.EnBuffer)
-    IOT_Sign_MQTT                            0x000015e1   Thumb Code   496  sign_mqtt.o(i.IOT_Sign_MQTT)
-    SysTick_Handler                          0x000017dd   Thumb Code    12  tick.o(i.SysTick_Handler)
-    SystemInit                               0x000017ed   Thumb Code    86  system_msp432p401r.o(i.SystemInit)
-    UART_receiveData                         0x00001859   Thumb Code    26  uart_MSP432P4XX.o(i.UART_receiveData)
-    UART_transmitData                        0x00001873   Thumb Code    24  uart_MSP432P4XX.o(i.UART_transmitData)
-    Usart_SendByte                           0x0000188b   Thumb Code    16  myuart.o(i.Usart_SendByte)
-    Usart_SendString                         0x0000189b   Thumb Code    28  myuart.o(i.Usart_SendString)
-    utils_hmac_sha256(const unsigned char*, unsigned, const unsigned char*, unsigned, unsigned char*) 0x000018b7   Thumb Code   194  sign_sha256.o(i._Z17utils_hmac_sha256PKhjS0_jPh)
-    utils_sha256_init(iot_sha256_context*)   0x00001979   Thumb Code    14  sign_sha256.o(i._Z17utils_sha256_initP18iot_sha256_context)
-    _sign_get_clientid(char*, const char*, const char*) 0x00001989   Thumb Code   310  sign_mqtt.o(i._Z18_sign_get_clientidPcPKcS1_)
-    utils_sha256_finish(iot_sha256_context*, unsigned char*) 0x00001ad5   Thumb Code   350  sign_sha256.o(i._Z19utils_sha256_finishP18iot_sha256_contextPh)
-    utils_sha256_starts(iot_sha256_context*) 0x00001c39   Thumb Code    46  sign_sha256.o(i._Z19utils_sha256_startsP18iot_sha256_context)
-    utils_sha256_update(iot_sha256_context*, const unsigned char*, unsigned) 0x00001c89   Thumb Code   124  sign_sha256.o(i._Z19utils_sha256_updateP18iot_sha256_contextPKhj)
-    utils_sha256_process(iot_sha256_context*, const unsigned char*) 0x00001d05   Thumb Code   444  sign_sha256.o(i._Z20utils_sha256_processP18iot_sha256_contextPKh)
-    _iotx_generate_sign_string(const char*, const char*, const char*, const char*, char*) 0x00001ec5   Thumb Code   294  sign_mqtt.o(i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc)
-    __0printf                                0x00002085   Thumb Code    22  printfa.o(i.__0printf)
-    __1printf                                0x00002085   Thumb Code     0  printfa.o(i.__0printf)
-    __2printf                                0x00002085   Thumb Code     0  printfa.o(i.__0printf)
-    __c89printf                              0x00002085   Thumb Code     0  printfa.o(i.__0printf)
-    printf                                   0x00002085   Thumb Code     0  printfa.o(i.__0printf)
-    __0sprintf                               0x000020a5   Thumb Code    34  printfa.o(i.__0sprintf)
-    __1sprintf                               0x000020a5   Thumb Code     0  printfa.o(i.__0sprintf)
-    __2sprintf                               0x000020a5   Thumb Code     0  printfa.o(i.__0sprintf)
-    __c89sprintf                             0x000020a5   Thumb Code     0  printfa.o(i.__0sprintf)
-    sprintf                                  0x000020a5   Thumb Code     0  printfa.o(i.__0sprintf)
-    free                                     0x000020cd   Thumb Code    88  mallocr.o(i.__free$realloc)
-    malloc                                   0x00002129   Thumb Code    64  mallocr.o(i.__malloc$realloc)
-    __scatterload_copy                       0x00002179   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00002187   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00002189   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    _is_digit                                0x0000231d   Thumb Code    14  scanf_fp.o(i._is_digit)
-    cJSON_Delete                             0x00002aad   Thumb Code    84  cjson.o(i.cJSON_Delete)
-    cJSON_GetObjectItemCaseSensitive         0x00002b05   Thumb Code    18  cjson.o(i.cJSON_GetObjectItemCaseSensitive)
-    cJSON_IsNumber                           0x00002b17   Thumb Code    22  cjson.o(i.cJSON_IsNumber)
-    cJSON_IsObject                           0x00002b2d   Thumb Code    22  cjson.o(i.cJSON_IsObject)
-    cJSON_Parse                              0x00002b5f   Thumb Code    16  cjson.o(i.cJSON_Parse)
-    cJSON_ParseWithLengthOpts                0x00002b71   Thumb Code   204  cjson.o(i.cJSON_ParseWithLengthOpts)
-    cJSON_ParseWithOpts                      0x00002c45   Thumb Code    40  cjson.o(i.cJSON_ParseWithOpts)
-    delay_ms                                 0x00002cb5   Thumb Code    26  tick.o(i.delay_ms)
-    execAT                                   0x00002cd1   Thumb Code    68  atcommand.o(i.execAT)
-    fputc                                    0x00002d71   Thumb Code    22  main.o(i.fputc)
-    isEmpty                                  0x00002e39   Thumb Code    18  buffer.o(i.isEmpty)
-    main                                     0x00002e4d   Thumb Code   592  main.o(i.main)
-    ms_ticker_init                           0x0000320d   Thumb Code    82  tick.o(i.ms_ticker_init)
-    ms_ticker_read                           0x0000326d   Thumb Code     6  tick.o(i.ms_ticker_read)
-    myUartInit                               0x00003279   Thumb Code   140  myuart.o(i.myUartInit)
-    realloc                                  0x000039c9   Thumb Code   102  mallocr.o(i.realloc)
-    sendCommand                              0x00003a35   Thumb Code    62  atcommand.o(i.sendCommand)
-    strtod                                   0x00003ae9   Thumb Code    34  strtod.o(i.strtod)
-    __ctype_categories                       0x00003da8   Data          64  ctype_c.o(.constdata)
-    Region$$Table$$Base                      0x00004008   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00004028   Number         0  anon$$obj.o(Region$$Table)
+    EXTIX_Init                               0x00001591   Thumb Code    76  exti.o(i.EXTIX_Init)
+    EnBuffer                                 0x000015e1   Thumb Code    78  buffer.o(i.EnBuffer)
+    GPIO_setAsOutputPin                      0x00001631   Thumb Code    26  gpio_MSP432P4XX.o(i.GPIO_setAsOutputPin)
+    GPIO_setOutputHighOnPin                  0x00001651   Thumb Code    14  gpio_MSP432P4XX.o(i.GPIO_setOutputHighOnPin)
+    GPIO_setOutputLowOnPin                   0x00001665   Thumb Code    16  gpio_MSP432P4XX.o(i.GPIO_setOutputLowOnPin)
+    IOT_Sign_MQTT                            0x00001679   Thumb Code   496  sign_mqtt.o(i.IOT_Sign_MQTT)
+    PORT1_IRQHandler                         0x00001875   Thumb Code    48  exti.o(i.PORT1_IRQHandler)
+    SysTick_Handler                          0x000018ad   Thumb Code    12  tick.o(i.SysTick_Handler)
+    SystemInit                               0x000018bd   Thumb Code    86  system_msp432p401r.o(i.SystemInit)
+    UART_receiveData                         0x00001929   Thumb Code    26  uart_MSP432P4XX.o(i.UART_receiveData)
+    UART_transmitData                        0x00001943   Thumb Code    24  uart_MSP432P4XX.o(i.UART_transmitData)
+    Usart_SendByte                           0x0000195b   Thumb Code    16  myuart.o(i.Usart_SendByte)
+    Usart_SendString                         0x0000196b   Thumb Code    28  myuart.o(i.Usart_SendString)
+    utils_hmac_sha256(const unsigned char*, unsigned, const unsigned char*, unsigned, unsigned char*) 0x00001987   Thumb Code   194  sign_sha256.o(i._Z17utils_hmac_sha256PKhjS0_jPh)
+    utils_sha256_init(iot_sha256_context*)   0x00001a49   Thumb Code    14  sign_sha256.o(i._Z17utils_sha256_initP18iot_sha256_context)
+    _sign_get_clientid(char*, const char*, const char*) 0x00001a59   Thumb Code   310  sign_mqtt.o(i._Z18_sign_get_clientidPcPKcS1_)
+    utils_sha256_finish(iot_sha256_context*, unsigned char*) 0x00001ba5   Thumb Code   350  sign_sha256.o(i._Z19utils_sha256_finishP18iot_sha256_contextPh)
+    utils_sha256_starts(iot_sha256_context*) 0x00001d09   Thumb Code    46  sign_sha256.o(i._Z19utils_sha256_startsP18iot_sha256_context)
+    utils_sha256_update(iot_sha256_context*, const unsigned char*, unsigned) 0x00001d59   Thumb Code   124  sign_sha256.o(i._Z19utils_sha256_updateP18iot_sha256_contextPKhj)
+    utils_sha256_process(iot_sha256_context*, const unsigned char*) 0x00001dd5   Thumb Code   444  sign_sha256.o(i._Z20utils_sha256_processP18iot_sha256_contextPKh)
+    _iotx_generate_sign_string(const char*, const char*, const char*, const char*, char*) 0x00001f95   Thumb Code   294  sign_mqtt.o(i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc)
+    __0printf                                0x00002155   Thumb Code    22  printfa.o(i.__0printf)
+    __1printf                                0x00002155   Thumb Code     0  printfa.o(i.__0printf)
+    __2printf                                0x00002155   Thumb Code     0  printfa.o(i.__0printf)
+    __c89printf                              0x00002155   Thumb Code     0  printfa.o(i.__0printf)
+    printf                                   0x00002155   Thumb Code     0  printfa.o(i.__0printf)
+    __0sprintf                               0x00002175   Thumb Code    34  printfa.o(i.__0sprintf)
+    __1sprintf                               0x00002175   Thumb Code     0  printfa.o(i.__0sprintf)
+    __2sprintf                               0x00002175   Thumb Code     0  printfa.o(i.__0sprintf)
+    __c89sprintf                             0x00002175   Thumb Code     0  printfa.o(i.__0sprintf)
+    sprintf                                  0x00002175   Thumb Code     0  printfa.o(i.__0sprintf)
+    free                                     0x0000219d   Thumb Code    88  mallocr.o(i.__free$realloc)
+    malloc                                   0x000021f9   Thumb Code    64  mallocr.o(i.__malloc$realloc)
+    __scatterload_copy                       0x00002249   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00002257   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00002259   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    _is_digit                                0x000023ed   Thumb Code    14  scanf_fp.o(i._is_digit)
+    cJSON_Delete                             0x00002b7d   Thumb Code    84  cjson.o(i.cJSON_Delete)
+    cJSON_GetObjectItemCaseSensitive         0x00002bd5   Thumb Code    18  cjson.o(i.cJSON_GetObjectItemCaseSensitive)
+    cJSON_IsNumber                           0x00002be7   Thumb Code    22  cjson.o(i.cJSON_IsNumber)
+    cJSON_IsObject                           0x00002bfd   Thumb Code    22  cjson.o(i.cJSON_IsObject)
+    cJSON_Parse                              0x00002c2f   Thumb Code    16  cjson.o(i.cJSON_Parse)
+    cJSON_ParseWithLengthOpts                0x00002c41   Thumb Code   204  cjson.o(i.cJSON_ParseWithLengthOpts)
+    cJSON_ParseWithOpts                      0x00002d15   Thumb Code    40  cjson.o(i.cJSON_ParseWithOpts)
+    delay_ms                                 0x00002d85   Thumb Code    26  tick.o(i.delay_ms)
+    execAT                                   0x00002da1   Thumb Code    68  atcommand.o(i.execAT)
+    fputc                                    0x00002e41   Thumb Code    22  main.o(i.fputc)
+    isEmpty                                  0x00002f09   Thumb Code    18  buffer.o(i.isEmpty)
+    main                                     0x00002f1d   Thumb Code   698  main.o(i.main)
+    ms_ticker_init                           0x000033ad   Thumb Code    82  tick.o(i.ms_ticker_init)
+    ms_ticker_read                           0x0000340d   Thumb Code     6  tick.o(i.ms_ticker_read)
+    myUartInit                               0x00003419   Thumb Code   140  myuart.o(i.myUartInit)
+    realloc                                  0x00003b69   Thumb Code   102  mallocr.o(i.realloc)
+    sendCommand                              0x00003bd5   Thumb Code    62  atcommand.o(i.sendCommand)
+    strtod                                   0x00003c89   Thumb Code    34  strtod.o(i.strtod)
+    __ctype_categories                       0x00003f94   Data          64  ctype_c.o(.constdata)
+    Region$$Table$$Base                      0x000041f4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00004214   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_msp432p401r.o(.data)
-    wifi_ssid                                0x20000004   Data           4  main.o(.data)
-    wifi_pwd                                 0x20000008   Data           4  main.o(.data)
-    ProductKey                               0x2000000c   Data           4  main.o(.data)
-    ProductSecret                            0x20000010   Data           4  main.o(.data)
-    DeviceName                               0x20000014   Data           4  main.o(.data)
-    DeviceSecret                             0x20000018   Data           4  main.o(.data)
-    g_infra_mqtt_domain                      0x20000034   Data          24  sign_mqtt.o(.data)
-    clientid_kv                              0x2000004c   Data          16  sign_mqtt.o(.data)
-    __stdout                                 0x2000005c   Data           4  stdout.o(.data)
-    __microlib_freelist                      0x20000060   Data           4  mvars.o(.data)
-    __microlib_freelist_initialised          0x20000064   Data           4  mvars.o(.data)
-    ATCommandBuffer                          0x20000068   Data         100  main.o(.bss)
-    myBuffer                                 0x200000cc   Data         208  buffer.o(.bss)
-    tempBuffer                               0x2000019c   Data         200  atcommand.o(.bss)
+    shutdown_wifi                            0x20000004   Data           1  main.o(.data)
+    wifi_ssid                                0x20000008   Data           4  main.o(.data)
+    wifi_pwd                                 0x2000000c   Data           4  main.o(.data)
+    ProductKey                               0x20000010   Data           4  main.o(.data)
+    ProductSecret                            0x20000014   Data           4  main.o(.data)
+    DeviceName                               0x20000018   Data           4  main.o(.data)
+    DeviceSecret                             0x2000001c   Data           4  main.o(.data)
+    g_infra_mqtt_domain                      0x20000038   Data          24  sign_mqtt.o(.data)
+    clientid_kv                              0x20000050   Data          16  sign_mqtt.o(.data)
+    __stdout                                 0x20000060   Data           4  stdout.o(.data)
+    __microlib_freelist                      0x20000064   Data           4  mvars.o(.data)
+    __microlib_freelist_initialised          0x20000068   Data           4  mvars.o(.data)
+    ATCommandBuffer                          0x2000006c   Data         100  main.o(.bss)
+    myBuffer                                 0x200000d0   Data         208  buffer.o(.bss)
+    tempBuffer                               0x200001a0   Data         200  atcommand.o(.bss)
     __heap_base                              0x20000268   Data           0  startup_msp432p401r_uvision.o(HEAP)
     __heap_limit                             0x20001268   Data           0  startup_msp432p401r_uvision.o(HEAP)
     __initial_sp                             0x20002268   Data           0  startup_msp432p401r_uvision.o(STACK)
@@ -1481,168 +1552,173 @@ Memory Map of the image
 
   Image Entry point : 0x00000145
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00004090, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00004280, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00004028, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00004214, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000144   Data   RO           67    RESET               startup_msp432p401r_uvision.o
-    0x00000144   0x00000144   0x00000000   Code   RO         1693  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00000144   0x00000144   0x00000004   Code   RO         2023    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x00000148   0x00000148   0x00000004   Code   RO         2026    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x0000014c   0x0000014c   0x00000000   Code   RO         2028    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x0000014c   0x0000014c   0x00000000   Code   RO         2030    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x0000014c   0x0000014c   0x00000008   Code   RO         2031    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00000154   0x00000154   0x00000000   Code   RO         2033    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00000154   0x00000154   0x00000000   Code   RO         2035    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00000154   0x00000154   0x00000004   Code   RO         2024    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000144   0x00000144   0x00000000   Code   RO         1877  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000144   0x00000144   0x00000004   Code   RO         2207    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000148   0x00000148   0x00000004   Code   RO         2210    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x0000014c   0x0000014c   0x00000000   Code   RO         2212    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x0000014c   0x0000014c   0x00000000   Code   RO         2214    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x0000014c   0x0000014c   0x00000008   Code   RO         2215    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000154   0x00000154   0x00000000   Code   RO         2217    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000154   0x00000154   0x00000000   Code   RO         2219    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000154   0x00000154   0x00000004   Code   RO         2208    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x00000158   0x00000158   0x00000024   Code   RO           68    .text               startup_msp432p401r_uvision.o
-    0x0000017c   0x0000017c   0x0000000c   Code   RO         1696    .text               mc_w.l(tolower.o)
-    0x00000188   0x00000188   0x00000028   Code   RO         1698    .text               mc_w.l(memcpy.o)
-    0x000001b0   0x000001b0   0x00000024   Code   RO         1704    .text               mc_w.l(memseta.o)
-    0x000001d4   0x000001d4   0x0000000e   Code   RO         1706    .text               mc_w.l(strlen.o)
-    0x000001e2   0x000001e2   0x0000001c   Code   RO         1708    .text               mc_w.l(strcmp.o)
-    0x000001fe   0x000001fe   0x00000012   Code   RO         1710    .text               mc_w.l(strcpy.o)
-    0x00000210   0x00000210   0x0000001e   Code   RO         1712    .text               mc_w.l(strncmp.o)
-    0x0000022e   0x0000022e   0x0000014e   Code   RO         2009    .text               mf_w.l(dadd.o)
-    0x0000037c   0x0000037c   0x000000e4   Code   RO         2011    .text               mf_w.l(dmul.o)
-    0x00000460   0x00000460   0x0000003e   Code   RO         2015    .text               mf_w.l(dfixi.o)
+    0x0000017c   0x0000017c   0x0000000c   Code   RO         1880    .text               mc_w.l(tolower.o)
+    0x00000188   0x00000188   0x00000028   Code   RO         1882    .text               mc_w.l(memcpy.o)
+    0x000001b0   0x000001b0   0x00000024   Code   RO         1888    .text               mc_w.l(memseta.o)
+    0x000001d4   0x000001d4   0x0000000e   Code   RO         1890    .text               mc_w.l(strlen.o)
+    0x000001e2   0x000001e2   0x0000001c   Code   RO         1892    .text               mc_w.l(strcmp.o)
+    0x000001fe   0x000001fe   0x00000012   Code   RO         1894    .text               mc_w.l(strcpy.o)
+    0x00000210   0x00000210   0x0000001e   Code   RO         1896    .text               mc_w.l(strncmp.o)
+    0x0000022e   0x0000022e   0x0000014e   Code   RO         2193    .text               mf_w.l(dadd.o)
+    0x0000037c   0x0000037c   0x000000e4   Code   RO         2195    .text               mf_w.l(dmul.o)
+    0x00000460   0x00000460   0x0000003e   Code   RO         2199    .text               mf_w.l(dfixi.o)
     0x0000049e   0x0000049e   0x00000002   PAD
-    0x000004a0   0x000004a0   0x00000030   Code   RO         2019    .text               mf_w.l(cdcmple.o)
-    0x000004d0   0x000004d0   0x00000030   Code   RO         2021    .text               mf_w.l(cdrcmple.o)
-    0x00000500   0x00000500   0x0000002c   Code   RO         2038    .text               mc_w.l(uidiv.o)
-    0x0000052c   0x0000052c   0x00000062   Code   RO         2040    .text               mc_w.l(uldiv.o)
-    0x0000058e   0x0000058e   0x0000001e   Code   RO         2042    .text               mc_w.l(llshl.o)
-    0x000005ac   0x000005ac   0x00000020   Code   RO         2044    .text               mc_w.l(llushr.o)
-    0x000005cc   0x000005cc   0x00000024   Code   RO         2046    .text               mc_w.l(llsshr.o)
-    0x000005f0   0x000005f0   0x00000360   Code   RO         2056    .text               mc_w.l(scanf_fp.o)
-    0x00000950   0x00000950   0x00000040   Code   RO         2062    .text               mc_w.l(_sgetc.o)
-    0x00000990   0x00000990   0x0000009c   Code   RO         2064    .text               mc_w.l(strtod.o)
-    0x00000a2c   0x00000a2c   0x00000000   Code   RO         2066    .text               mc_w.l(iusefp.o)
-    0x00000a2c   0x00000a2c   0x000000ba   Code   RO         2067    .text               mf_w.l(depilogue.o)
-    0x00000ae6   0x00000ae6   0x000000de   Code   RO         2069    .text               mf_w.l(ddiv.o)
-    0x00000bc4   0x00000bc4   0x00000030   Code   RO         2071    .text               mf_w.l(dfixul.o)
-    0x00000bf4   0x00000bf4   0x00000024   Code   RO         2073    .text               mc_w.l(init.o)
-    0x00000c18   0x00000c18   0x0000000a   Code   RO         2075    .text               mc_w.l(isspace_c.o)
-    0x00000c22   0x00000c22   0x00000018   Code   RO         2081    .text               mf_w.l(dfltul.o)
-    0x00000c3a   0x00000c3a   0x00000038   Code   RO         2083    .text               mf_w.l(d2f.o)
+    0x000004a0   0x000004a0   0x00000030   Code   RO         2203    .text               mf_w.l(cdcmple.o)
+    0x000004d0   0x000004d0   0x00000030   Code   RO         2205    .text               mf_w.l(cdrcmple.o)
+    0x00000500   0x00000500   0x0000002c   Code   RO         2222    .text               mc_w.l(uidiv.o)
+    0x0000052c   0x0000052c   0x00000062   Code   RO         2224    .text               mc_w.l(uldiv.o)
+    0x0000058e   0x0000058e   0x0000001e   Code   RO         2226    .text               mc_w.l(llshl.o)
+    0x000005ac   0x000005ac   0x00000020   Code   RO         2228    .text               mc_w.l(llushr.o)
+    0x000005cc   0x000005cc   0x00000024   Code   RO         2230    .text               mc_w.l(llsshr.o)
+    0x000005f0   0x000005f0   0x00000360   Code   RO         2240    .text               mc_w.l(scanf_fp.o)
+    0x00000950   0x00000950   0x00000040   Code   RO         2246    .text               mc_w.l(_sgetc.o)
+    0x00000990   0x00000990   0x0000009c   Code   RO         2248    .text               mc_w.l(strtod.o)
+    0x00000a2c   0x00000a2c   0x00000000   Code   RO         2250    .text               mc_w.l(iusefp.o)
+    0x00000a2c   0x00000a2c   0x000000ba   Code   RO         2251    .text               mf_w.l(depilogue.o)
+    0x00000ae6   0x00000ae6   0x000000de   Code   RO         2253    .text               mf_w.l(ddiv.o)
+    0x00000bc4   0x00000bc4   0x00000030   Code   RO         2255    .text               mf_w.l(dfixul.o)
+    0x00000bf4   0x00000bf4   0x00000024   Code   RO         2257    .text               mc_w.l(init.o)
+    0x00000c18   0x00000c18   0x0000000a   Code   RO         2259    .text               mc_w.l(isspace_c.o)
+    0x00000c22   0x00000c22   0x00000018   Code   RO         2265    .text               mf_w.l(dfltul.o)
+    0x00000c3a   0x00000c3a   0x00000038   Code   RO         2267    .text               mf_w.l(d2f.o)
     0x00000c72   0x00000c72   0x00000002   PAD
-    0x00000c74   0x00000c74   0x00000028   Code   RO         2085    .text               mc_w.l(ctype_c.o)
-    0x00000c9c   0x00000c9c   0x0000006e   Code   RO         2088    .text               mf_w.l(fepilogue.o)
+    0x00000c74   0x00000c74   0x00000028   Code   RO         2269    .text               mc_w.l(ctype_c.o)
+    0x00000c9c   0x00000c9c   0x0000006e   Code   RO         2272    .text               mf_w.l(fepilogue.o)
     0x00000d0a   0x00000d0a   0x00000002   PAD
-    0x00000d0c   0x00000d0c   0x000000e0   Code   RO          436    i.ATCheckSetResponse  atcommand.o
-    0x00000dec   0x00000dec   0x00000094   Code   RO          437    i.AT_Get_SUB_In_Json  atcommand.o
-    0x00000e80   0x00000e80   0x00000118   Code   RO          438    i.AT_Send_message   atcommand.o
-    0x00000f98   0x00000f98   0x000000c8   Code   RO          439    i.AT_generate_MQTTAUTH_command  atcommand.o
-    0x00001060   0x00001060   0x00000088   Code   RO          440    i.AT_generate_MQTTCID_command  atcommand.o
-    0x000010e8   0x000010e8   0x00000118   Code   RO          441    i.AT_generate_MQTTPUB_command  atcommand.o
-    0x00001200   0x00001200   0x000000b0   Code   RO          442    i.AT_generate_MQTTSOCK_command  atcommand.o
-    0x000012b0   0x000012b0   0x00000140   Code   RO          443    i.AT_generate_MQTTSUB_command  atcommand.o
-    0x000013f0   0x000013f0   0x000000bc   Code   RO          444    i.AT_generate_wifi_connect_command  atcommand.o
-    0x000014ac   0x000014ac   0x0000001a   Code   RO          372    i.BufferInit        buffer.o
-    0x000014c6   0x000014c6   0x0000005a   Code   RO          373    i.BufferLength      buffer.o
-    0x00001520   0x00001520   0x0000002e   Code   RO          374    i.DeBuffer          buffer.o
+    0x00000d0c   0x00000d0c   0x000000e0   Code   RO          439    i.ATCheckSetResponse  atcommand.o
+    0x00000dec   0x00000dec   0x00000094   Code   RO          440    i.AT_Get_SUB_In_Json  atcommand.o
+    0x00000e80   0x00000e80   0x00000118   Code   RO          441    i.AT_Send_message   atcommand.o
+    0x00000f98   0x00000f98   0x000000c8   Code   RO          442    i.AT_generate_MQTTAUTH_command  atcommand.o
+    0x00001060   0x00001060   0x00000088   Code   RO          443    i.AT_generate_MQTTCID_command  atcommand.o
+    0x000010e8   0x000010e8   0x00000118   Code   RO          444    i.AT_generate_MQTTPUB_command  atcommand.o
+    0x00001200   0x00001200   0x000000b0   Code   RO          445    i.AT_generate_MQTTSOCK_command  atcommand.o
+    0x000012b0   0x000012b0   0x00000140   Code   RO          446    i.AT_generate_MQTTSUB_command  atcommand.o
+    0x000013f0   0x000013f0   0x000000bc   Code   RO          447    i.AT_generate_wifi_connect_command  atcommand.o
+    0x000014ac   0x000014ac   0x0000001a   Code   RO          375    i.BufferInit        buffer.o
+    0x000014c6   0x000014c6   0x0000005a   Code   RO          376    i.BufferLength      buffer.o
+    0x00001520   0x00001520   0x0000002e   Code   RO          377    i.DeBuffer          buffer.o
     0x0000154e   0x0000154e   0x00000002   PAD
-    0x00001550   0x00001550   0x00000040   Code   RO          249    i.EUSCIA2_IRQHandler  myuart.o
-    0x00001590   0x00001590   0x0000004e   Code   RO          375    i.EnBuffer          buffer.o
-    0x000015de   0x000015de   0x00000002   PAD
-    0x000015e0   0x000015e0   0x000001fc   Code   RO         1206    i.IOT_Sign_MQTT     sign_mqtt.o
-    0x000017dc   0x000017dc   0x00000010   Code   RO          320    i.SysTick_Handler   tick.o
-    0x000017ec   0x000017ec   0x0000006c   Code   RO            5    i.SystemInit        system_msp432p401r.o
-    0x00001858   0x00001858   0x0000001a   Code   RO         1351    i.UART_receiveData  msp432p4xx_driverlib.lib(uart_MSP432P4XX.o)
-    0x00001872   0x00001872   0x00000018   Code   RO         1358    i.UART_transmitData  msp432p4xx_driverlib.lib(uart_MSP432P4XX.o)
-    0x0000188a   0x0000188a   0x00000010   Code   RO          250    i.Usart_SendByte    myuart.o
-    0x0000189a   0x0000189a   0x0000001c   Code   RO          251    i.Usart_SendString  myuart.o
-    0x000018b6   0x000018b6   0x000000c2   Code   RO         1258    i._Z17utils_hmac_sha256PKhjS0_jPh  sign_sha256.o
-    0x00001978   0x00001978   0x0000000e   Code   RO         1260    i._Z17utils_sha256_initP18iot_sha256_context  sign_sha256.o
-    0x00001986   0x00001986   0x00000002   PAD
-    0x00001988   0x00001988   0x0000014c   Code   RO         1207    i._Z18_sign_get_clientidPcPKcS1_  sign_mqtt.o
-    0x00001ad4   0x00001ad4   0x00000164   Code   RO         1261    i._Z19utils_sha256_finishP18iot_sha256_contextPh  sign_sha256.o
-    0x00001c38   0x00001c38   0x00000050   Code   RO         1262    i._Z19utils_sha256_startsP18iot_sha256_context  sign_sha256.o
-    0x00001c88   0x00001c88   0x0000007c   Code   RO         1263    i._Z19utils_sha256_updateP18iot_sha256_contextPKhj  sign_sha256.o
-    0x00001d04   0x00001d04   0x000001c0   Code   RO         1264    i._Z20utils_sha256_processP18iot_sha256_contextPKh  sign_sha256.o
-    0x00001ec4   0x00001ec4   0x00000170   Code   RO         1208    i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc  sign_mqtt.o
-    0x00002034   0x00002034   0x00000050   Code   RO         1209    i._Z8_hex2strPhtPc  sign_mqtt.o
-    0x00002084   0x00002084   0x00000020   Code   RO         1951    i.__0printf         mc_w.l(printfa.o)
-    0x000020a4   0x000020a4   0x00000028   Code   RO         1953    i.__0sprintf        mc_w.l(printfa.o)
-    0x000020cc   0x000020cc   0x0000005c   Code   RO         1983    i.__free$realloc    mc_w.l(mallocr.o)
-    0x00002128   0x00002128   0x00000050   Code   RO         1984    i.__malloc$realloc  mc_w.l(mallocr.o)
-    0x00002178   0x00002178   0x0000000e   Code   RO         2092    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00002186   0x00002186   0x00000002   Code   RO         2093    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00002188   0x00002188   0x0000000e   Code   RO         2094    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00002196   0x00002196   0x00000002   PAD
-    0x00002198   0x00002198   0x00000184   Code   RO         1958    i._fp_digits        mc_w.l(printfa.o)
-    0x0000231c   0x0000231c   0x0000000e   Code   RO         2058    i._is_digit         mc_w.l(scanf_fp.o)
-    0x0000232a   0x0000232a   0x00000002   PAD
-    0x0000232c   0x0000232c   0x000006dc   Code   RO         1959    i._printf_core      mc_w.l(printfa.o)
-    0x00002a08   0x00002a08   0x00000024   Code   RO         1960    i._printf_post_padding  mc_w.l(printfa.o)
-    0x00002a2c   0x00002a2c   0x0000002e   Code   RO         1961    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x00002a5a   0x00002a5a   0x0000000a   Code   RO         1963    i._sputc            mc_w.l(printfa.o)
-    0x00002a64   0x00002a64   0x00000048   Code   RO          532    i.buffer_skip_whitespace  cjson.o
-    0x00002aac   0x00002aac   0x00000058   Code   RO          564    i.cJSON_Delete      cjson.o
-    0x00002b04   0x00002b04   0x00000012   Code   RO          578    i.cJSON_GetObjectItemCaseSensitive  cjson.o
-    0x00002b16   0x00002b16   0x00000016   Code   RO          588    i.cJSON_IsNumber    cjson.o
-    0x00002b2c   0x00002b2c   0x00000016   Code   RO          589    i.cJSON_IsObject    cjson.o
-    0x00002b42   0x00002b42   0x0000001c   Code   RO          594    i.cJSON_New_Item    cjson.o
-    0x00002b5e   0x00002b5e   0x00000010   Code   RO          595    i.cJSON_Parse       cjson.o
-    0x00002b6e   0x00002b6e   0x00000002   PAD
-    0x00002b70   0x00002b70   0x000000d4   Code   RO          597    i.cJSON_ParseWithLengthOpts  cjson.o
-    0x00002c44   0x00002c44   0x00000028   Code   RO          598    i.cJSON_ParseWithOpts  cjson.o
-    0x00002c6c   0x00002c6c   0x00000048   Code   RO          613    i.case_insensitive_strcmp  cjson.o
-    0x00002cb4   0x00002cb4   0x0000001a   Code   RO          321    i.delay_ms          tick.o
-    0x00002cce   0x00002cce   0x00000002   PAD
-    0x00002cd0   0x00002cd0   0x000000a0   Code   RO          445    i.execAT            atcommand.o
-    0x00002d70   0x00002d70   0x00000020   Code   RO           75    i.fputc             main.o
-    0x00002d90   0x00002d90   0x00000004   Code   RO          619    i.get_decimal_point  cjson.o
-    0x00002d94   0x00002d94   0x00000052   Code   RO          620    i.get_object_item   cjson.o
-    0x00002de6   0x00002de6   0x00000002   PAD
-    0x00002de8   0x00002de8   0x00000050   Code   RO         1985    i.internal_alloc    mc_w.l(mallocr.o)
-    0x00002e38   0x00002e38   0x00000012   Code   RO          376    i.isEmpty           buffer.o
-    0x00002e4a   0x00002e4a   0x00000002   PAD
-    0x00002e4c   0x00002e4c   0x000003c0   Code   RO           76    i.main              main.o
-    0x0000320c   0x0000320c   0x00000060   Code   RO          322    i.ms_ticker_init    tick.o
-    0x0000326c   0x0000326c   0x0000000c   Code   RO          323    i.ms_ticker_read    tick.o
-    0x00003278   0x00003278   0x000000a0   Code   RO          252    i.myUartInit        myuart.o
-    0x00003318   0x00003318   0x000000f8   Code   RO          622    i.parse_array       cjson.o
-    0x00003410   0x00003410   0x0000005a   Code   RO          623    i.parse_hex4        cjson.o
-    0x0000346a   0x0000346a   0x00000002   PAD
-    0x0000346c   0x0000346c   0x00000154   Code   RO          624    i.parse_number      cjson.o
-    0x000035c0   0x000035c0   0x0000013e   Code   RO          625    i.parse_object      cjson.o
-    0x000036fe   0x000036fe   0x0000018c   Code   RO          626    i.parse_string      cjson.o
-    0x0000388a   0x0000388a   0x00000002   PAD
-    0x0000388c   0x0000388c   0x0000013c   Code   RO          627    i.parse_value       cjson.o
-    0x000039c8   0x000039c8   0x0000006c   Code   RO         1986    i.realloc           mc_w.l(mallocr.o)
-    0x00003a34   0x00003a34   0x00000078   Code   RO          446    i.sendCommand       atcommand.o
-    0x00003aac   0x00003aac   0x0000003c   Code   RO          638    i.skip_utf8_bom     cjson.o
-    0x00003ae8   0x00003ae8   0x00000030   Code   RO         1689    i.strtod            m_wm.l(strtod.o)
-    0x00003b18   0x00003b18   0x0000012c   Code   RO          641    i.utf16_literal_to_utf8  cjson.o
-    0x00003c44   0x00003c44   0x00000024   Data   RO          253    .constdata          myuart.o
-    0x00003c68   0x00003c68   0x00000140   Data   RO         1275    .constdata          sign_sha256.o
-    0x00003da8   0x00003da8   0x00000040   Data   RO         2086    .constdata          mc_w.l(ctype_c.o)
-    0x00003de8   0x00003de8   0x00000131   Data   RO           78    .conststring        main.o
-    0x00003f19   0x00003f19   0x00000003   PAD
-    0x00003f1c   0x00003f1c   0x000000e9   Data   RO         1214    .conststring        sign_mqtt.o
-    0x00004005   0x00004005   0x00000003   PAD
-    0x00004008   0x00004008   0x00000020   Data   RO         2090    Region$$Table       anon$$obj.o
+    0x00001550   0x00001550   0x00000040   Code   RO          252    i.EUSCIA2_IRQHandler  myuart.o
+    0x00001590   0x00001590   0x00000050   Code   RO         1343    i.EXTIX_Init        exti.o
+    0x000015e0   0x000015e0   0x0000004e   Code   RO          378    i.EnBuffer          buffer.o
+    0x0000162e   0x0000162e   0x00000002   PAD
+    0x00001630   0x00001630   0x00000020   Code   RO         1392    i.GPIO_setAsOutputPin  msp432p4xx_driverlib.lib(gpio_MSP432P4XX.o)
+    0x00001650   0x00001650   0x00000014   Code   RO         1397    i.GPIO_setOutputHighOnPin  msp432p4xx_driverlib.lib(gpio_MSP432P4XX.o)
+    0x00001664   0x00001664   0x00000014   Code   RO         1398    i.GPIO_setOutputLowOnPin  msp432p4xx_driverlib.lib(gpio_MSP432P4XX.o)
+    0x00001678   0x00001678   0x000001fc   Code   RO         1209    i.IOT_Sign_MQTT     sign_mqtt.o
+    0x00001874   0x00001874   0x00000038   Code   RO         1344    i.PORT1_IRQHandler  exti.o
+    0x000018ac   0x000018ac   0x00000010   Code   RO          323    i.SysTick_Handler   tick.o
+    0x000018bc   0x000018bc   0x0000006c   Code   RO            5    i.SystemInit        system_msp432p401r.o
+    0x00001928   0x00001928   0x0000001a   Code   RO         1570    i.UART_receiveData  msp432p4xx_driverlib.lib(uart_MSP432P4XX.o)
+    0x00001942   0x00001942   0x00000018   Code   RO         1577    i.UART_transmitData  msp432p4xx_driverlib.lib(uart_MSP432P4XX.o)
+    0x0000195a   0x0000195a   0x00000010   Code   RO          253    i.Usart_SendByte    myuart.o
+    0x0000196a   0x0000196a   0x0000001c   Code   RO          254    i.Usart_SendString  myuart.o
+    0x00001986   0x00001986   0x000000c2   Code   RO         1261    i._Z17utils_hmac_sha256PKhjS0_jPh  sign_sha256.o
+    0x00001a48   0x00001a48   0x0000000e   Code   RO         1263    i._Z17utils_sha256_initP18iot_sha256_context  sign_sha256.o
+    0x00001a56   0x00001a56   0x00000002   PAD
+    0x00001a58   0x00001a58   0x0000014c   Code   RO         1210    i._Z18_sign_get_clientidPcPKcS1_  sign_mqtt.o
+    0x00001ba4   0x00001ba4   0x00000164   Code   RO         1264    i._Z19utils_sha256_finishP18iot_sha256_contextPh  sign_sha256.o
+    0x00001d08   0x00001d08   0x00000050   Code   RO         1265    i._Z19utils_sha256_startsP18iot_sha256_context  sign_sha256.o
+    0x00001d58   0x00001d58   0x0000007c   Code   RO         1266    i._Z19utils_sha256_updateP18iot_sha256_contextPKhj  sign_sha256.o
+    0x00001dd4   0x00001dd4   0x000001c0   Code   RO         1267    i._Z20utils_sha256_processP18iot_sha256_contextPKh  sign_sha256.o
+    0x00001f94   0x00001f94   0x00000170   Code   RO         1211    i._Z26_iotx_generate_sign_stringPKcS0_S0_S0_Pc  sign_mqtt.o
+    0x00002104   0x00002104   0x00000050   Code   RO         1212    i._Z8_hex2strPhtPc  sign_mqtt.o
+    0x00002154   0x00002154   0x00000020   Code   RO         2135    i.__0printf         mc_w.l(printfa.o)
+    0x00002174   0x00002174   0x00000028   Code   RO         2137    i.__0sprintf        mc_w.l(printfa.o)
+    0x0000219c   0x0000219c   0x0000005c   Code   RO         2167    i.__free$realloc    mc_w.l(mallocr.o)
+    0x000021f8   0x000021f8   0x00000050   Code   RO         2168    i.__malloc$realloc  mc_w.l(mallocr.o)
+    0x00002248   0x00002248   0x0000000e   Code   RO         2276    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00002256   0x00002256   0x00000002   Code   RO         2277    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00002258   0x00002258   0x0000000e   Code   RO         2278    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00002266   0x00002266   0x00000002   PAD
+    0x00002268   0x00002268   0x00000184   Code   RO         2142    i._fp_digits        mc_w.l(printfa.o)
+    0x000023ec   0x000023ec   0x0000000e   Code   RO         2242    i._is_digit         mc_w.l(scanf_fp.o)
+    0x000023fa   0x000023fa   0x00000002   PAD
+    0x000023fc   0x000023fc   0x000006dc   Code   RO         2143    i._printf_core      mc_w.l(printfa.o)
+    0x00002ad8   0x00002ad8   0x00000024   Code   RO         2144    i._printf_post_padding  mc_w.l(printfa.o)
+    0x00002afc   0x00002afc   0x0000002e   Code   RO         2145    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x00002b2a   0x00002b2a   0x0000000a   Code   RO         2147    i._sputc            mc_w.l(printfa.o)
+    0x00002b34   0x00002b34   0x00000048   Code   RO          535    i.buffer_skip_whitespace  cjson.o
+    0x00002b7c   0x00002b7c   0x00000058   Code   RO          567    i.cJSON_Delete      cjson.o
+    0x00002bd4   0x00002bd4   0x00000012   Code   RO          581    i.cJSON_GetObjectItemCaseSensitive  cjson.o
+    0x00002be6   0x00002be6   0x00000016   Code   RO          591    i.cJSON_IsNumber    cjson.o
+    0x00002bfc   0x00002bfc   0x00000016   Code   RO          592    i.cJSON_IsObject    cjson.o
+    0x00002c12   0x00002c12   0x0000001c   Code   RO          597    i.cJSON_New_Item    cjson.o
+    0x00002c2e   0x00002c2e   0x00000010   Code   RO          598    i.cJSON_Parse       cjson.o
+    0x00002c3e   0x00002c3e   0x00000002   PAD
+    0x00002c40   0x00002c40   0x000000d4   Code   RO          600    i.cJSON_ParseWithLengthOpts  cjson.o
+    0x00002d14   0x00002d14   0x00000028   Code   RO          601    i.cJSON_ParseWithOpts  cjson.o
+    0x00002d3c   0x00002d3c   0x00000048   Code   RO          616    i.case_insensitive_strcmp  cjson.o
+    0x00002d84   0x00002d84   0x0000001a   Code   RO          324    i.delay_ms          tick.o
+    0x00002d9e   0x00002d9e   0x00000002   PAD
+    0x00002da0   0x00002da0   0x000000a0   Code   RO          448    i.execAT            atcommand.o
+    0x00002e40   0x00002e40   0x00000020   Code   RO           75    i.fputc             main.o
+    0x00002e60   0x00002e60   0x00000004   Code   RO          622    i.get_decimal_point  cjson.o
+    0x00002e64   0x00002e64   0x00000052   Code   RO          623    i.get_object_item   cjson.o
+    0x00002eb6   0x00002eb6   0x00000002   PAD
+    0x00002eb8   0x00002eb8   0x00000050   Code   RO         2169    i.internal_alloc    mc_w.l(mallocr.o)
+    0x00002f08   0x00002f08   0x00000012   Code   RO          379    i.isEmpty           buffer.o
+    0x00002f1a   0x00002f1a   0x00000002   PAD
+    0x00002f1c   0x00002f1c   0x00000490   Code   RO           76    i.main              main.o
+    0x000033ac   0x000033ac   0x00000060   Code   RO          325    i.ms_ticker_init    tick.o
+    0x0000340c   0x0000340c   0x0000000c   Code   RO          326    i.ms_ticker_read    tick.o
+    0x00003418   0x00003418   0x000000a0   Code   RO          255    i.myUartInit        myuart.o
+    0x000034b8   0x000034b8   0x000000f8   Code   RO          625    i.parse_array       cjson.o
+    0x000035b0   0x000035b0   0x0000005a   Code   RO          626    i.parse_hex4        cjson.o
+    0x0000360a   0x0000360a   0x00000002   PAD
+    0x0000360c   0x0000360c   0x00000154   Code   RO          627    i.parse_number      cjson.o
+    0x00003760   0x00003760   0x0000013e   Code   RO          628    i.parse_object      cjson.o
+    0x0000389e   0x0000389e   0x0000018c   Code   RO          629    i.parse_string      cjson.o
+    0x00003a2a   0x00003a2a   0x00000002   PAD
+    0x00003a2c   0x00003a2c   0x0000013c   Code   RO          630    i.parse_value       cjson.o
+    0x00003b68   0x00003b68   0x0000006c   Code   RO         2170    i.realloc           mc_w.l(mallocr.o)
+    0x00003bd4   0x00003bd4   0x00000078   Code   RO          449    i.sendCommand       atcommand.o
+    0x00003c4c   0x00003c4c   0x0000003c   Code   RO          641    i.skip_utf8_bom     cjson.o
+    0x00003c88   0x00003c88   0x00000030   Code   RO         1873    i.strtod            m_wm.l(strtod.o)
+    0x00003cb8   0x00003cb8   0x0000012c   Code   RO          644    i.utf16_literal_to_utf8  cjson.o
+    0x00003de4   0x00003de4   0x00000024   Data   RO          256    .constdata          myuart.o
+    0x00003e08   0x00003e08   0x00000140   Data   RO         1278    .constdata          sign_sha256.o
+    0x00003f48   0x00003f48   0x0000004c   Data   RO         1401    .constdata          msp432p4xx_driverlib.lib(gpio_MSP432P4XX.o)
+    0x00003f94   0x00003f94   0x00000040   Data   RO         2270    .constdata          mc_w.l(ctype_c.o)
+    0x00003fd4   0x00003fd4   0x00000131   Data   RO           78    .conststring        main.o
+    0x00004105   0x00004105   0x00000003   PAD
+    0x00004108   0x00004108   0x000000e9   Data   RO         1217    .conststring        sign_mqtt.o
+    0x000041f1   0x000041f1   0x00000003   PAD
+    0x000041f4   0x000041f4   0x00000020   Data   RO         2274    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00004028, Size: 0x00002268, Max: 0x00010000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x00004214, Size: 0x00002268, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00004028   0x00000004   Data   RW            6    .data               system_msp432p401r.o
-    0x20000004   0x0000402c   0x00000018   Data   RW           79    .data               main.o
-    0x2000001c   0x00004044   0x00000004   Data   RW          324    .data               tick.o
-    0x20000020   0x00004048   0x00000014   Data   RW          643    .data               cjson.o
-    0x20000034   0x0000405c   0x00000028   Data   RW         1215    .data               sign_mqtt.o
-    0x2000005c   0x00004084   0x00000004   Data   RW         2037    .data               mc_w.l(stdout.o)
-    0x20000060   0x00004088   0x00000004   Data   RW         2048    .data               mc_w.l(mvars.o)
-    0x20000064   0x0000408c   0x00000004   Data   RW         2049    .data               mc_w.l(mvars.o)
-    0x20000068        -       0x00000064   Zero   RW           77    .bss                main.o
-    0x200000cc        -       0x000000d0   Zero   RW          378    .bss                buffer.o
-    0x2000019c        -       0x000000c8   Zero   RW          447    .bss                atcommand.o
-    0x20000264   0x00004090   0x00000004   PAD
+    0x20000000   0x00004214   0x00000004   Data   RW            6    .data               system_msp432p401r.o
+    0x20000004   0x00004218   0x0000001c   Data   RW           79    .data               main.o
+    0x20000020   0x00004234   0x00000004   Data   RW          327    .data               tick.o
+    0x20000024   0x00004238   0x00000014   Data   RW          646    .data               cjson.o
+    0x20000038   0x0000424c   0x00000028   Data   RW         1218    .data               sign_mqtt.o
+    0x20000060   0x00004274   0x00000004   Data   RW         2221    .data               mc_w.l(stdout.o)
+    0x20000064   0x00004278   0x00000004   Data   RW         2232    .data               mc_w.l(mvars.o)
+    0x20000068   0x0000427c   0x00000004   Data   RW         2233    .data               mc_w.l(mvars.o)
+    0x2000006c        -       0x00000064   Zero   RW           77    .bss                main.o
+    0x200000d0        -       0x000000d0   Zero   RW          381    .bss                buffer.o
+    0x200001a0        -       0x000000c8   Zero   RW          450    .bss                atcommand.o
     0x20000268        -       0x00001000   Zero   RW           66    HEAP                startup_msp432p401r_uvision.o
     0x20001268        -       0x00001000   Zero   RW           65    STACK               startup_msp432p401r_uvision.o
 
@@ -1665,7 +1741,8 @@ Image component sizes
       2232        528          0          0        200       9399   atcommand.o
        258          0          0          0        208       3899   buffer.o
       2744         76          0         20          0      18824   cjson.o
-       992        378        305         24        100     197064   main.o
+       136         12          0          0          0        992   exti.o
+      1200        480        305         28        100     197194   main.o
        268         34         36          0          0       5846   myuart.o
       1288        130        233         40          0       9940   sign_mqtt.o
       1216         44        320          0          0       9966   sign_sha256.o
@@ -1674,9 +1751,9 @@ Image component sizes
        150         24          0          4          0      32558   tick.o
 
     ----------------------------------------------------------------------
-      9310       1244       1256         92       8704     293847   Object Totals
+      9654       1358       1256         96       8700     294969   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        18          0          6          0          4          0   (incl. Padding)
+        18          0          6          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1726,10 +1803,11 @@ Image component sizes
         24          0          0          0          0         76   dfltul.o
        228          0          0          0          0         96   dmul.o
        110          0          0          0          0        168   fepilogue.o
-        50          0          0          0          0       4255   uart_MSP432P4XX.o
+        72         16         76          0          0       5875   gpio_MSP432P4XX.o
+        50          0          0          0          0       1199   uart_MSP432P4XX.o
 
     ----------------------------------------------------------------------
-      5794        186         64         12          0       8023   Library Totals
+      5866        202        140         12          0      10842   Library Totals
         10          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
@@ -1739,10 +1817,10 @@ Image component sizes
         48         14          0          0          0        128   m_wm.l
       4320        172         64         12          0       2504   mc_w.l
       1366          0          0          0          0       1136   mf_w.l
-        50          0          0          0          0       4255   msp432p4xx_driverlib.lib
+       122         16         76          0          0       7074   msp432p4xx_driverlib.lib
 
     ----------------------------------------------------------------------
-      5794        186         64         12          0       8023   Library Totals
+      5866        202        140         12          0      10842   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1751,15 +1829,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     15104       1430       1320        104       8704     294798   Grand Totals
-     15104       1430       1320        104       8704     294798   ELF Image Totals
-     15104       1430       1320        104          0          0   ROM Totals
+     15520       1560       1396        108       8700     298239   Grand Totals
+     15520       1560       1396        108       8700     298239   ELF Image Totals
+     15520       1560       1396        108          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                16424 (  16.04kB)
+    Total RO  Size (Code + RO Data)                16916 (  16.52kB)
     Total RW  Size (RW Data + ZI Data)              8808 (   8.60kB)
-    Total ROM Size (Code + RO Data + RW Data)      16528 (  16.14kB)
+    Total ROM Size (Code + RO Data + RW Data)      17024 (  16.63kB)
 
 ==============================================================================
 

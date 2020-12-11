@@ -10,6 +10,7 @@
 ".\objects\cjson.o"
 ".\objects\sign_mqtt.o"
 ".\objects\sign_sha256.o"
+".\objects\exti.o"
 --library_type=microlib --strict --scatter ".\Objects\uart.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
