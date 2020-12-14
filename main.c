@@ -35,7 +35,8 @@
 #define MaxCommandLength 100
 char shutdown_wifi = 0;
 
-const char* wifi_ssid 		=	"wangjiacai";
+const char* wifi_ssid 		=	"One";
+//const char* wifi_ssid 		=	"wangjiacai";
 const char* wifi_pwd 			= "www.202058";
 const char* ProductKey		= "a1za4jJ21X0";
 const char* ProductSecret = "UDhiZmCv3WIv0mY3";
@@ -131,10 +132,10 @@ int main(void)
 			led2blink(Blue,5,1000);											//蓝灯闪烁代表连接阿里云服务器失败
 		}while(1);
 		GPIO_setOutputHighOnPin(GPIO_PORT_P2,GPIO_PIN1);   //P2.1输出高电平，LED2中绿灯亮
-		MAP_UART_enableModule(EUSCI_A0_BASE);
+		//MAP_UART_enableModule(EUSCI_A0_BASE);
 		AT_generate_MQTTPUB_command(ATCommandBuffer,MaxCommandLength,ProductKey,DeviceName);
 		while(!execAT(ATCommandBuffer));
-		
+		myEUSCIA0Init();
 		AT_Send_message("{\"id\":1605187527200,\"params\":{\"PowerSwitch\":1},\"version\":\"1.0\",\"method\":\"thing.event.property.post\"}");										//物模型属性上报
 		printf("------connection established------\r\n");
     while(1){
