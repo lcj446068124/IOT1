@@ -36,8 +36,8 @@
 #define MaxCommandLength 100
 char shutdown_wifi = 0;
 
-const char* wifi_ssid 		=	"One";
-//const char* wifi_ssid 		=	"wangjiacai";
+//const char* wifi_ssid 		=	"One";
+const char* wifi_ssid 		=	"wangjiacai";
 const char* wifi_pwd 			= "www.202058";
 const char* ProductKey		= "a1za4jJ21X0";
 const char* ProductSecret = "UDhiZmCv3WIv0mY3";
@@ -147,8 +147,10 @@ int main(void)
 			//execAT("AT+MQTTCID=a1mCXgajcO4.light0|securemode=3\\,signmethod=hmacsha1|\r");			//close reset
 			execAT("AT+MQTTKEEPALIVE=30\r");
 			OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_3, "progress:    6/8");
-			//execAT("AT+MQTTRECONN=ON\r");
-			//execAT("AT+MQTTAUTOSTART=ON\r");																											//close reset
+			execAT("AT+MQTTRECONN=ON\r");
+			OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_3, "progress:    7/8");
+			execAT("AT+MQTTAUTOSTART=ON\r");																											//close reset
+			OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_3, "verifying...    ");
 			AT_generate_MQTTSUB_command(ATCommandBuffer,MaxCommandLength,"0",ProductKey,DeviceName);
 			if(execAT("AT+MQTTSTART\r") && execAT(ATCommandBuffer)){
 				OLED_Clear();
@@ -168,7 +170,7 @@ int main(void)
 		myEUSCIA0Init();
 		AT_Send_message("{\"id\":1605187527200,\"params\":{\"PowerSwitch\":1},\"version\":\"1.0\",\"method\":\"thing.event.property.post\"}");										//物模型属性上报
 		printf("------connection established------\r\n");
-		OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:    ON");
+		OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:   ON");
     while(1){
 			MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P2,GPIO_PIN1);
 			if(shutdown_wifi == 1){
@@ -193,13 +195,13 @@ int main(void)
 							if(choice == 0){
 								printf("turn off the light \r\n");
 								MAP_GPIO_setOutputLowOnPin(GPIO_PORT_P1, GPIO_PIN0);
-								OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:    OFF");
+								OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:  OFF");
 								printf("Return statu to aliIOT\r\n");
 								AT_Send_message("{\"id\":1605187527200,\"params\":{\"PowerSwitch\":0},\"version\":\"1.0\",\"method\":\"thing.event.property.post\"}");
 							}else if(choice == 1){
 								printf("turn on the light \r\n");
 								MAP_GPIO_setOutputHighOnPin(GPIO_PORT_P1, GPIO_PIN0);
-								OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:    ON");
+								OLED_ShowString(OLED_DISPLAY_COLUMN_START, OLED_DISPLAY_ROW_2, "LED1 statu:   ON");
 								printf("Return statu to aliIOT\r\n");
 								AT_Send_message("{\"id\":1605187527200,\"params\":{\"PowerSwitch\":1},\"version\":\"1.0\",\"method\":\"thing.event.property.post\"}");
 							}

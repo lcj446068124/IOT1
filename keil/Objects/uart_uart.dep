@@ -11,7 +11,7 @@ I (..\source\third_party\CMSIS\Include\cmsis_armcc.h)(0x5FD8849E)
 I (..\source\ti/devices/msp432p4xx/inc/system_msp432p401r.h)(0x5FD8849F)
 F (..\source\ti\devices\msp432p4xx\startup_system_files\keil\startup_msp432p401r_uvision.s)(0x5FD8849F)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_uart-IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 526" --pd "__MSP432P401R__ SETA 1"--list .\listings\startup_msp432p401r_uvision.lst --xref -o .\objects\startup_msp432p401r_uvision.o --depend .\objects\startup_msp432p401r_uvision.d)
 F (..\source\ti\devices\msp432p4xx\driverlib\keil\msp432p4xx_driverlib.lib)(0x5FD8849F)()
-F (..\main.c)(0x5FD8BBAC)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\source\third_party\CMSIS\Include -I ..\source -I ..\-I.\RTE\_uart-IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -D__MSP432P401R__ -D__MSP432P401R__-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\main.c)(0x5FD8C545)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\source\third_party\CMSIS\Include -I ..\source -I ..\-I.\RTE\_uart-IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -D__MSP432P401R__ -D__MSP432P401R__-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\source\ti/devices/msp432p4xx/driverlib/driverlib.h)(0x5FD8849E)
 I (..\source\ti/devices/msp432p4xx/driverlib/adc14.h)(0x5FD8849E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EDB3E)
@@ -196,7 +196,7 @@ I (..\source\ti/devices/msp432p4xx/driverlib/wdt_a.h)(0x5FD8849F)
 I (..\source\ti/devices/msp432p4xx/driverlib/sysctl.h)(0x5FD8849F)
 I (..\source\ti/devices/msp432p4xx/driverlib/flash.h)(0x5FD8849E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EDB3C)
-F (..\ATCommand.c)(0x5FD8849E)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\source\third_party\CMSIS\Include -I ..\source -I ..\-I.\RTE\_uart-IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -D__MSP432P401R__ -D__MSP432P401R__-o .\objects\atcommand.o --omf_browse .\objects\atcommand.crf --depend .\objects\atcommand.d)
+F (..\ATCommand.c)(0x5FD8C554)(--c99 --gnu -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\source\third_party\CMSIS\Include -I ..\source -I ..\-I.\RTE\_uart-IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="526" -D__MSP432P401R__ -D__MSP432P401R__-o .\objects\atcommand.o --omf_browse .\objects\atcommand.crf --depend .\objects\atcommand.d)
 I (..\ATCommand.h)(0x5FD8849E)
 I (..\source\ti/devices/msp432p4xx/driverlib/driverlib.h)(0x5FD8849E)
 I (..\source\ti/devices/msp432p4xx/driverlib/adc14.h)(0x5FD8849E)

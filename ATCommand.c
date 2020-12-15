@@ -203,7 +203,7 @@ bool AT_generate_MQTTCID_command(char* ATCommandBuffer,int len,iotx_sign_mqtt_t*
 bool AT_generate_MQTTSUB_command(char* ATCommandBuffer,int len,char* subId,const char* ProductKey,const char* DeviceName){
 	memset(ATCommandBuffer,0,len * sizeof(char));
 	char head[] = "AT+MQTTSUB=";
-	char en[] = "/thing/service/property/set,0\r";
+	char en[] = "/thing/service/property/set,1\r";
 	if(strlen(head) + strlen(en) + strlen(subId) + strlen(ProductKey) + strlen(DeviceName) + 7>= len)
 			return false;
 	memcpy(ATCommandBuffer, head, strlen(head));
@@ -219,7 +219,7 @@ bool AT_generate_MQTTSUB_command(char* ATCommandBuffer,int len,char* subId,const
 bool AT_generate_MQTTPUB_command(char* ATCommandBuffer,int len,const char* ProductKey,const char* DeviceName){
 	memset(ATCommandBuffer,0,len * sizeof(char));
 	char head[] = "AT+MQTTPUB=";
-	char en[] = "/thing/event/property/post,0\r";
+	char en[] = "/thing/event/property/post,1\r";
 	if(strlen(head) + strlen(en) + strlen(ProductKey) + strlen(DeviceName) + 6>= len)
 			return false;
 	memcpy(ATCommandBuffer, head, strlen(head));
