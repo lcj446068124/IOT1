@@ -16,7 +16,7 @@
         <TargetCommonOption>
           <Device>MSP432P401R</Device>
           <Vendor>Texas Instruments</Vendor>
-          <PackID>TexasInstruments.MSP432P4xx_DFP.3.2.6</PackID>
+          <PackID>TexasInstruments.MSP432P4xx_DFP.3.2.5</PackID>
           <PackURL>http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/msp432cmsis/latest/exports/</PackURL>
           <Cpu>IRAM(0x20000000,0x00010000) IRAM2(0x01000000,0x00010000) IROM(0x00000000,0x00040000) IROM2(0x00200000,0x00004000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -456,6 +456,16 @@
               <FileName>led.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>i2c.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\i2c.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\oled.c</FilePath>
             </File>
           </Files>
         </Group>

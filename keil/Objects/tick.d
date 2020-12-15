@@ -40,5 +40,5 @@
 .\objects\tick.o: ..\source\ti/devices/msp432p4xx/driverlib/wdt_a.h
 .\objects\tick.o: ..\source\ti/devices/msp432p4xx/driverlib/sysctl.h
 .\objects\tick.o: ..\source\ti/devices/msp432p4xx/driverlib/flash.h
-.\objects\tick.o: C:\Users\44606\AppData\Local\Arm\Packs\TexasInstruments\MSP432P4xx_DFP\3.2.6\Device\Include\system_msp432p401r.h
+.\objects\tick.o: C:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include\system_msp432p401r.h
 .\objects\tick.o: ..\tick.h

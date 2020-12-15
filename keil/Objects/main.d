@@ -51,3 +51,4 @@
 .\objects\main.o: ..\sign_api.h
 .\objects\main.o: ..\exti.h
 .\objects\main.o: ..\led.h
+.\objects\main.o: ..\oled.h

@@ -3,26 +3,26 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: μVision V5.28.0.0
-Copyright (C) 2019 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: l cj, ms, LIC=3UUCX-HHEST-RDIK3-AXA96-KPD1B-H0ZEM
+IDE-Version: μVision V5.26.2.0
+Copyright (C) 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: l cj, abc, LIC=65ISB-28S1R-2ZSW4-FZYUP-ERB7J-05X63
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.28.0.0
+Toolchain:       MDK-ARM Plus  Version: 5.26.2.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 6 (build 750)
 Assembler:       Armasm.exe V5.06 update 6 (build 750)
 Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
 Library Manager: ArmAr.exe V5.06 update 6 (build 750)
 Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
-CPU DLL:         SARMCM3.DLL V5.28.0.0
-Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      CMSIS_AGDI.dll V1.31.18.0
-Dialog DLL:      TCM.DLL V1.36.2.0
+CPU DLL:         SARMCM3.DLL V5.26.2.0
+Dialog DLL:      DCM.DLL V1.17.2.0
+Target DLL:      TI_XDS\XDS2CM3.dll V1.0.4.0
+Dialog DLL:      TCM.DLL V1.36.1.0
  
 <h2>Project:</h2>
-C:\Users\44606\Desktop\实验10\工程10_01\keil\uart.uvprojx
-Project File Date:  12/11/2020
+\\Mac\Home\Desktop\Keil项目\IOT1\keil\uart.uvprojx
+Project File Date:  12/15/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -30,8 +30,10 @@ Project File Date:  12/11/2020
   
 Rebuild target 'uart'
 assembling startup_msp432p401r_uvision.s...
-compiling sign_mqtt.cpp...
-compiling sign_sha256.cpp...
+compiling system_msp432p401r.c...
+compiling main.c...
+compiling myUart.c...
+compiling tick.c...
 compiling cJSON.c...
 ..\cJSON.c(1994): warning:  #2803-D: unrecognized GCC pragma
       #pragma GCC diagnostic push
@@ -40,31 +42,31 @@ compiling cJSON.c...
 ..\cJSON.c(2005): warning:  #2803-D: unrecognized GCC pragma
       #pragma GCC diagnostic pop
 ..\cJSON.c: 3 warnings, 0 errors
-compiling system_msp432p401r.c...
-compiling tick.c...
-compiling myUart.c...
+compiling buffer.c...
+compiling sign_mqtt.cpp...
+compiling ATCommand.c...
+compiling sign_sha256.cpp...
 compiling led.c...
 compiling exti.c...
-compiling buffer.c...
-compiling main.c...
-compiling ATCommand.c...
+compiling i2c.c...
+compiling oled.c...
 linking...
-Program Size: Code=16196 RO-data=1424 RW-data=108 ZI-data=8700  
+Program Size: Code=18044 RO-data=3516 RW-data=112 ZI-data=8704  
 ".\Objects\uart.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: TexasInstruments
-                http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/msp432cmsis/latest/exports/TexasInstruments.MSP432P4xx_DFP.3.2.6.pack
-                TexasInstruments.MSP432P4xx_DFP.3.2.6
+                http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/msp432cmsis/latest/exports/TexasInstruments.MSP432P4xx_DFP.3.2.5.pack
+                TexasInstruments.MSP432P4xx_DFP.3.2.5
                 Device Family Pack for Texas Instruments SimpleLink(TM) MSP432 Series
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_uart
-  C:\Users\44606\AppData\Local\Arm\Packs\TexasInstruments\MSP432P4xx_DFP\3.2.6\Device\Include
+  C:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P4xx_DFP\3.2.5\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:05
 </pre>
 </body>
 </html>

@@ -549,12 +549,11 @@ ARM Macro Assembler    Page 9
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\objects\startup_msp432p401r_uvision.d -o.\objects\startup_msp
-432p401r_uvision.o -I.\RTE\_uart -IC:\Users\44606\AppData\Local\Arm\Packs\Texas
-Instruments\MSP432P4xx_DFP\3.2.6\Device\Include -IC:\Keil_v5\ARM\CMSIS\Include 
---predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 528" --pred
-efine="__MSP432P401R__ SETA 1" --list=.\listings\startup_msp432p401r_uvision.ls
-t ..\source\ti\devices\msp432p4xx\startup_system_files\keil\startup_msp432p401r
-_uvision.s
+432p401r_uvision.o -I.\RTE\_uart -IC:\Keil_v5\ARM\PACK\TexasInstruments\MSP432P
+4xx_DFP\3.2.5\Device\Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__MICR
+OLIB SETA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="__MSP432P401
+R__ SETA 1" --list=.\listings\startup_msp432p401r_uvision.lst ..\source\ti\devi
+ces\msp432p4xx\startup_system_files\keil\startup_msp432p401r_uvision.s
 
 
 
